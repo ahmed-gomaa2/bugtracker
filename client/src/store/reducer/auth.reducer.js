@@ -20,6 +20,7 @@ export default (state = initialState, action) => {
                 error: null
             }
         case actionTypes.REGISTER_USER_FAIL:
+        case actionTypes.LOGIN_USER_FAIL:
             return {
                 ...state,
                 error: {

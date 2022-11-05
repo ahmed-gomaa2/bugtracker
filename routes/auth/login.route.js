@@ -13,7 +13,7 @@ module.exports = app => {
                 if(findUserError) {
                     res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER WHILE FINDING THE USER IN THE DB!', err: findUserError}});
                 } else if(findUserRes.length === 0) {
-                    res.status(400).json({error: {type: 'client', msg: 'THIS USER DOESN\'T EVEN EXIST PLEASE REGISTER!'}});
+                    res.status(400).json({error: {type: 'email', msg: 'THIS USER DOESN\'T EVEN EXIST PLEASE REGISTER!'}});
                 }else {
                     // compare the password with the one in the DB.
                     const isPasswordMatch = await bcryptjs.compare(password, findUserRes[0].password);

@@ -15,7 +15,7 @@ module.exports = app => {
                     console.log(findUserError);
                     res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER WHILE TRYING TO FIND THE USER EXISTS!', err: findUserError}});
                 }else if(findUserRes.length > 0){
-                    res.status(409).json({error: {type: 'client', msg: 'AN USER WITH THE SAME EMAIL ALREADY EXISTS!'}});
+                    res.status(409).json({error: {type: 'email', msg: 'A USER WITH THE SAME EMAIL ALREADY EXISTS!'}});
                 }else {
 
                     // Handle password hashing using bcrypt.

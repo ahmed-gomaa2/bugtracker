@@ -52,7 +52,7 @@ export const login = userData => async dispatch => {
         const res = await axios.post('/login', userData);
         dispatch({
             type: LOGIN_USER_SUCCESS,
-            user: res.data
+            token: res.data.token
         });
 
         await dispatch(loadUser());

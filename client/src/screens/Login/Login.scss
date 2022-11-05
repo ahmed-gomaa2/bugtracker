@@ -1,8 +1,8 @@
-.Register {
+.Login {
   width: 100%;
   height: 100%;
 
-  .Register__form {
+  .Login__form {
     max-width: 400px;
     display: flex;
     align-items: center;
@@ -12,18 +12,18 @@
     gap:10px;
     animation: shift 1s, fade .5s;
 
-    .Register__form--header {
+    .Login__form--header {
 
     }
 
-    .Register__form--element {
+    .Login__form--element {
       display: flex;
       flex-direction: column;
       gap: 10px;
       align-items: start;
       width: 100%;
 
-      .Register__form--element-error {
+      .Login__form--element-error {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -38,11 +38,11 @@
         }
       }
 
-      .Register__form--not-register {
+      .Login__form--not-Login {
         margin: 0 auto;
       }
 
-      .Register__form--button {
+      .Login__form--button {
         position: relative;
         width: 100%;
         height: 40px;
@@ -103,11 +103,11 @@
         }
       }
 
-      .Register__form--input {
+      .Login__form--input {
         width: 100%;
         position: relative;
 
-        .Register__form--input-invalid {
+        .Login__form--input-invalid {
           border: 1px solid red;
           outline: none;
         }

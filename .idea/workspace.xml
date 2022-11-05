@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="fa031f02-f3f1-4380-a407-2186fd0228cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Register/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Register/Reigster.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Register/Reigster.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/auth.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/auth.action.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/reducer/auth.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/auth.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/auth/login.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/login.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/auth/register.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/register.route.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +60,7 @@
       <workItem from="1667571918306" duration="12006000" />
       <workItem from="1667591910475" duration="11933000" />
       <workItem from="1667641122525" duration="9064000" />
-      <workItem from="1667680031276" duration="493000" />
+      <workItem from="1667680031276" duration="6960000" />
     </task>
     <servers />
   </component>
