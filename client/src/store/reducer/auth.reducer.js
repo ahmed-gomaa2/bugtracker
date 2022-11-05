@@ -11,6 +11,7 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.REGISTER_USER_SUCCESS:
+        case actionTypes.LOGIN_USER_SUCCESS:
             localStorage.setItem('token', action.token);
             return {
                 ...state,

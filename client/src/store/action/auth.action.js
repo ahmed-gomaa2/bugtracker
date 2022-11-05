@@ -1,5 +1,11 @@
 import axios from 'axios';
-import {LOAD_USER_FAIL, LOAD_USER_SUCCESS, REGISTER_USER_FAIL, REGISTER_USER_SUCCESS} from "./action.types";
+import {
+    LOAD_USER_FAIL,
+    LOAD_USER_SUCCESS,
+    LOGIN_USER_FAIL, LOGIN_USER_SUCCESS,
+    REGISTER_USER_FAIL,
+    REGISTER_USER_SUCCESS
+} from "./action.types";
 import setHeadersHelper from "../../utls/set.headers.helper";
 
 export const loadUser = () => async dispatch => {
@@ -37,6 +43,23 @@ export const register = userData => async dispatch => {
         dispatch({
             type: REGISTER_USER_FAIL,
             payload: e.response.data.error
-        })
+        });
+    }
+}
+
+export const login = userData => async dispatch => {
+    try {
+        const res = await axios.post('/login', userData);
+        dispatch({
+            type: LOGIN_USER_SUCCESS,
+            user: res.data
+        });
+
+        await dispatch(loadUser());
+    }catch (e) {
+        dispatch({
+            type: LOGIN_USER_FAIL,
+            payload: e.response.data.error
+        });
     }
 }
