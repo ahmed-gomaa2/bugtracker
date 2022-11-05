@@ -24,8 +24,8 @@ module.exports = app => {
                     const hashedPassword = await bcrypt.hash(password, salt);
 
                     // Insert user into the database.
-                    const insertUserQuery = 'INSERT INTO users (username, email, password, admin) VALUES (?, ?, ?, ?)';
-                    connection.query(insertUserQuery, [username, email, hashedPassword, admin], (insertUserError, insertUserRes) => {
+                    const insertUserQuery = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+                    connection.query(insertUserQuery, [username, email, hashedPassword], (insertUserError, insertUserRes) => {
                         if(insertUserError) {
                             res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER WHILE TRYING TO INSERT USER INTO DB!', err: insertUserError}});
                         }else {

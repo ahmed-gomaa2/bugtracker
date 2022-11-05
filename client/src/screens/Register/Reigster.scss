@@ -1,0 +1,139 @@
+.Register {
+  width: 100%;
+  height: 100%;
+
+  .Register__form {
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+    gap:20px;
+    animation: shift 1.5s, fade 1.5s;
+
+    .Register__form--header {
+
+    }
+
+    .Register__form--element {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: start;
+      width: 100%;
+
+      .Register__form--not-register {
+        margin: 0 auto;
+      }
+
+      .Register__form--button {
+        position: relative;
+        width: 100%;
+        height: 40px;
+        padding: 5px 10px;
+        margin: 0 auto;
+        background-color: white;
+        color: black;
+        border: none;
+        outline: 1px solid black;
+        cursor: pointer;
+        transition: all ease-in-out 0.2s;
+        z-index: 2;
+
+        &:disabled {
+          cursor: not-allowed;
+          outline: lightgray 1px solid;
+          &:hover p {
+            color: black;
+          }
+          &:hover:before {
+            transform: scaleX(0);
+          }
+        }
+
+        &:before {
+          content: '';
+          position: absolute;
+          background-color: green;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          transform: scaleX(0);
+          overflow: hidden;
+          transform-origin: left;
+          transition: all ease-in-out 0.2s;
+        }
+
+        p {
+          z-index: 2;
+          color: black;
+          transition: all ease-in-out 0.2s;
+          position: relative;
+        }
+
+        &:hover:before {
+          transform: scaleX(1);
+          //transform-origin: right;
+        }
+
+        &:hover {
+          //background-color: lightgreen;
+          //color: black;
+
+          p {
+            color: white;
+          }
+        }
+      }
+
+      .Register__form--input {
+        width: 100%;
+        position: relative;
+
+        i {
+          position: absolute;
+          top: 50%;
+          left: 10px;
+          transform: translateY(-50%);
+
+          &:after {
+            content: '';
+            height: 15px;
+            width: 2px;
+            position: absolute;
+            background-color: gray;
+            margin-left: 5px;
+          }
+        }
+
+        input {
+          width: 100%;
+          height: 35px;
+          padding-left: 35px;
+
+        }
+      }
+    }
+  }
+}
+
+@keyframes shift {
+  from {
+    transform: translateX(50px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade  {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
