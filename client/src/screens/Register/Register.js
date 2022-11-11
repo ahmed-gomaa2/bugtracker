@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Reigster.scss';
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-import {register} from '../../store/action/auth.action';
+import {register, resetForm} from '../../store/action/auth.action';
 
 const Register = props => {
     const [formData, setFormData] = useState({
@@ -80,8 +80,6 @@ const Register = props => {
             ...formData
         }
 
-        console.log(updatedFormData)
-
         const updatedFormElement = {
             ...updatedFormData[updatedInputKey]
         }
@@ -92,13 +90,10 @@ const Register = props => {
         updatedFormData[updatedInputKey] = updatedFormElement;
         let formIsValid = true;
         for(let inputKey in updatedFormData) {
-            console.log(updatedFormData[inputKey].valid)
             formIsValid = updatedFormData[inputKey].valid && formIsValid;
         }
-        console.log(updatedFormData)
         setFormData(updatedFormData);
         setIsValid(formIsValid);
-        console.log(formIsValid)
     }
 
     const formSubmitHandler = e => {
@@ -111,6 +106,10 @@ const Register = props => {
 
         props.register(userData);
     }
+
+    useEffect(() => {
+        props.resetForm();
+    }, []);
     return (
         <div className={'Register'}>
             <form onSubmit={formSubmitHandler} onChange={formChangeHandler} className="Register__form">
@@ -152,7 +151,7 @@ const Register = props => {
                     <button disabled={!isValid} type={'submit'} className="Register__form--button"><p>Register</p></button>
                 </div>
                 <div className="Register__form--element">
-                    <p className="Register__form--not-register">Not registered? <NavLink to={'/login'}>Login</NavLink></p>
+                    <p className="Register__form--not-register">Already a member? <NavLink to={'/login'}>Login</NavLink></p>
                 </div>
             </form>
         </div>
@@ -165,4 +164,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {register}) (Register);
+export default connect(mapStateToProps, {register, resetForm}) (Register);

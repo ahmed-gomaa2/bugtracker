@@ -1,0 +1,48 @@
+.Home__workspaces {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .Home__workspaces--menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+
+  .Home__workspaces--header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &:hover {
+      .Home__workspaces--add {
+        opacity: 1;
+      }
+    }
+
+    .Home__workspaces--add {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 5px;
+      background-color: white;
+      color: black;
+      outline: 1px black solid;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all ease-in-out 0.1s;
+      font-size: 13px;
+      opacity: 0;
+
+      &:hover {
+        background-color: blue;
+        color: white;
+        outline: none;
+
+      }
+    }
+  }
+}

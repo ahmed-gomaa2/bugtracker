@@ -1,27 +1,78 @@
 import './App.css';
-import Navbar from "./components/UI/Navbar/Navbar";
+import Navbar from "./components/HOC/Navbar/Navbar";
 import {Route, Router, Routes} from "react-router-dom";
 import Register from "./screens/Register/Register";
 import {connect} from "react-redux";
 import Login from "./screens/Login/Login";
+import {useEffect} from "react";
+import {loadUser} from "./store/action/auth.action";
+import Spinner from "./components/UI/Spinner/Spinner";
+import Dashboard from "./screens/Dashboard/Dashboard";
+import ProtectedRoute from "./components/HOC/ProtectedRoute/ProtectedRoute";
+import Home from "./screens/Dashboard/Body/Home/Home";
+import Workspace from "./screens/Dashboard/Body/Workspace/Workspace";
+import Settings from "./screens/Dashboard/Body/Settings/Settings";
+import Landing from "./screens/Landing/Landing";
+import Workspaces from "./screens/Dashboard/Body/WorkspacesContainer/WorkspacesContainer";
 
-function App() {
+function App(props) {
+    useEffect(() => {
+        props.loadUser();
+    }, []);
+
   return (
     <div className="App">
-        <Navbar />
-        <Routes>
-            <Route exact path={'/register'} element={<Register />} />
-            <Route exact path={'/login'} element={<Login />} />
-        </Routes>
+        {
+            !props.loadingUser ? (
+                <>
+                    <Routes>
+                        <Route exact path={'/register'} element={
+                            <ProtectedRoute isAuthenticated={!props.isAuthenticated} route={'/dashboard'}>
+                                <Navbar>
+                                    <Register />
+                                </Navbar>
+                            </ProtectedRoute>
+                        } />
+                        <Route exact path={'/login'} element={
+                            <ProtectedRoute isAuthenticated={!props.isAuthenticated} route={'/dashboard'}>
+                                <Navbar>
+                                    <Login />
+                                </Navbar>
+                            </ProtectedRoute>
+                        } />
+                        <Route exact path={'/'} element={
+                            <ProtectedRoute isAuthenticated={!props.isAuthenticated} route={'/dashboard'}>
+                                <Landing />
+                            </ProtectedRoute>
+                        } />
+
+                        <Route exact path={'/dashboard'} element={
+                            <ProtectedRoute isAuthenticated={props.isAuthenticated} route={'/login'}>
+                                <Dashboard />
+                            </ProtectedRoute>
+                        } >
+                            <Route exact path={'/dashboard/home'} element={<Home />} />
+                            <Route exact path={'/dashboard/workspaces'} element={<Workspaces />} />
+                            <Route exact path={'/dashboard/workspaces/:workspace_id'} element={<Workspace />} />
+                            <Route exact path={'/dashboard/settings'} element={<Settings />} />
+                        </Route>
+                    </Routes>
+                </>
+
+            ): (
+                <Spinner />
+            )
+        }
     </div>
   );
 }
 
 const mapStateToProps = state => {
-    console.log(state);
     return {
-        msg: state.msg
+        msg: state.msg,
+        loadingUser: state.auth.loading,
+        isAuthenticated: state.auth.authenticated
     }
 }
 
-export default connect(mapStateToProps) (App);
+export default connect(mapStateToProps, {loadUser}) (App);

@@ -1,0 +1,14 @@
+.Home {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .Home__body{
+    padding: 20px;
+    height: calc(100% - 50px);
+    overflow: auto;
+
+
+
+  }
+}

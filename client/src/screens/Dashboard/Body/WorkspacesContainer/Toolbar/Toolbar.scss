@@ -1,0 +1,27 @@
+.Toolbar {
+  display: flex;
+  flex-direction: row;
+
+  .Toolbar__add {
+    margin-left: auto;
+    padding: 5px 10px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    outline: 1px solid white;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: white;
+      color: black;
+
+      * {
+        color: black;
+      }
+    }
+  }
+}

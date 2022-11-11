@@ -44,7 +44,7 @@
           p {
             z-index: 2;
             color: black;
-            transition: all ease-in-out 0.5s;
+            transition: all ease-in-out 0.2s;
             position: relative;
           }
 
@@ -55,17 +55,42 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: lightblue;
+            background-color: green;
+            overflow: hidden;
+            //z-index: -1;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.2s ease-in-out;
+          }
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: green;
             overflow: hidden;
             //z-index: -1;
             transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.5s ease-in-out;
+            transform-origin: bottom;
+            transition: transform 0.2s ease-in-out;
+            border-radius: 5px;
           }
 
-          &:hover:before {
-            transform: scaleX(1);
-            transform-origin: left;
+          //&:hover:before {
+          //  transform: scaleY(1);
+          //  //transform-origin: left;
+          //}
+          &:hover:after {
+            transform: scaleY(1);
+            //transform-origin: left;
+          }
+
+          &:hover {
+            p {
+              color: white;
+            }
           }
         }
 
@@ -86,34 +111,70 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: lightblue;
-            overflow: hidden;;
+            background-color: blue;
+            overflow: hidden;
             //z-index: -1;
             transform: scaleX(0);
-            transform-origin: right;
+            transform-origin: top;
+            transition: transform 0.2s ease-in-out;
+            border-radius: 5px;
+          }
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: blue;
+            overflow: hidden;;
+            //z-index: -1;
+            transform: scaleY(0);
+            transform-origin: bottom;
             transition: transform 0.5s ease-in-out;
           }
 
           &:hover:before {
-            transform: scaleX(1);
-            transform-origin: left;
+            transform: scaleY(1);
+            //transform-origin: top;
           }
 
           &:hover {
             color: white;
 
-            //p {
-            //  //color: white;
-            //  position: relative;
-            //}
+            p {
+              color: white;
+              position: relative;
+            }
 
           }
 
           p {
             z-index: 2;
             color: black;
-            transition: all ease-in-out 0.5s;
+            transition: all ease-in-out 0.2s;
             position: relative;
+          }
+        }
+
+        .Navbar__active-login {
+          &:before {
+            transform: scaleX(1) scaleY(1);
+            border-radius: 5px;
+
+          }
+          //background-color: green;
+          p {
+            color: white;
+          }
+        }
+
+        .Navbar__active-register {
+          &:before {
+            transform: scaleY(1);
+          }
+          p {
+            color: white;
           }
         }
       }

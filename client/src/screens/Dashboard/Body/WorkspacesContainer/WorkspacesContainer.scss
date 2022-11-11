@@ -1,0 +1,9 @@
+.WorkspacesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .WorkspacesContainer__body {
+    padding: 20px;
+  }
+}

@@ -5,7 +5,7 @@ const initialState = {
     authenticated: false,
     token: localStorage.getItem('token'),
     loading: true,
-    error: null
+    error: null,
 }
 
 export default (state = initialState, action) => {
@@ -31,7 +31,23 @@ export default (state = initialState, action) => {
         case actionTypes.LOAD_USER_SUCCESS:
             return {
                 ...state,
-                user: action.user
+                user: action.user,
+                authenticated: true
+            }
+        case actionTypes.RESET_FORM_AUTH:
+            return {
+                ...state,
+                error: null
+            }
+        case actionTypes.LOAD_USER_START:
+            return {
+                ...state,
+                loading: true
+            }
+        case actionTypes.LOAD_USER_END:
+            return {
+                ...state,
+                loading: false
             }
         default:
             return state;

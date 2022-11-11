@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Login.scss';
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-import {login} from '../../store/action/auth.action';
+import {login, resetForm} from '../../store/action/auth.action';
 
 const Login = props => {
     const [formData, setFormData] = useState({
@@ -95,6 +95,10 @@ const Login = props => {
 
         props.login(userData);
     }
+
+    useEffect(() => {
+        props.resetForm();
+    }, []);
     return (
         <div className={'Login'}>
             <form onSubmit={formSubmitHandler} onChange={formChangeHandler} className="Login__form">
@@ -136,7 +140,7 @@ const Login = props => {
                     <button disabled={!isValid} type={'submit'} className="Login__form--button"><p>Login</p></button>
                 </div>
                 <div className="Login__form--element">
-                    <p className="Login__form--not-Login">Not logged in? <NavLink to={'/register'}>Register</NavLink></p>
+                    <p className="Login__form--not-Login">Not a member? <NavLink to={'/register'}>Register</NavLink></p>
                 </div>
             </form>
         </div>
@@ -149,4 +153,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {login}) (Login);
+export default connect(mapStateToProps, {login, resetForm}) (Login);

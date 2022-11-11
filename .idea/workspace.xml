@@ -2,14 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa031f02-f3f1-4380-a407-2186fd0228cd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/components/HOC/Navbar/Navbar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UI/Navbar/Navbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UI/Navbar/Navbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/HOC/Navbar/Navbar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Login/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Login/Login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Login/Login.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/screens/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Register/Register.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/screens/Register/Reigster.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Register/Reigster.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/action/action.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/action.types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/auth.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/auth.action.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/reducer/auth.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/auth.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/auth/login.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/login.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/auth/register.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/register.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/reducer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,13 +45,17 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/prime-projects/bug-tracker&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.textmate.bundles&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\prime-projects\bug-tracker\routes\auth" />
+      <recent name="D:\prime-projects\bug-tracker\client\src\screens\Dashboard\Body\Home" />
+      <recent name="D:\prime-projects\bug-tracker\client\src\screens\Dashboard" />
+      <recent name="D:\prime-projects\bug-tracker\client\src\screens\Dashboard\Body" />
+      <recent name="D:\prime-projects\bug-tracker\client\src\screens\Dashboard\Body\Home\WorkspacesList" />
+      <recent name="D:\prime-projects\bug-tracker\client\src\components\HOC" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -60,7 +72,22 @@
       <workItem from="1667571918306" duration="12006000" />
       <workItem from="1667591910475" duration="11933000" />
       <workItem from="1667641122525" duration="9064000" />
-      <workItem from="1667680031276" duration="6960000" />
+      <workItem from="1667680031276" duration="7691000" />
+      <workItem from="1667697072954" duration="1623000" />
+      <workItem from="1667712084841" duration="1927000" />
+      <workItem from="1667735156062" duration="1615000" />
+      <workItem from="1667778889618" duration="320000" />
+      <workItem from="1667854882215" duration="4602000" />
+      <workItem from="1667906370547" duration="3664000" />
+      <workItem from="1667915697513" duration="146000" />
+      <workItem from="1667915855091" duration="18270000" />
+      <workItem from="1667963444229" duration="7847000" />
+      <workItem from="1667989499160" duration="7907000" />
+      <workItem from="1668033438018" duration="10820000" />
+      <workItem from="1668051713498" duration="4373000" />
+      <workItem from="1668056143671" duration="1782000" />
+      <workItem from="1668068855630" duration="2074000" />
+      <workItem from="1668104559073" duration="6788000" />
     </task>
     <servers />
   </component>
