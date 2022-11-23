@@ -2,10 +2,12 @@ import * as actionTypes from '../action/action.types';
 
 const initialState = {
     user: null,
+    users: [],
     authenticated: false,
     token: localStorage.getItem('token'),
     loading: true,
     error: null,
+    resetEmail: null
 }
 
 export default (state = initialState, action) => {
@@ -18,6 +20,11 @@ export default (state = initialState, action) => {
                 loading: false,
                 authenticated: true,
                 error: null
+            }
+        case actionTypes.FETCH_ALL_USERS_SUCCESS:
+            return {
+                ...state,
+                users: action.usersData
             }
         case actionTypes.REGISTER_USER_FAIL:
         case actionTypes.LOGIN_USER_FAIL:
@@ -49,6 +56,22 @@ export default (state = initialState, action) => {
                 ...state,
                 loading: false
             }
+        case actionTypes.RESET_EVERYTHING:
+            return {
+                ...state,
+
+            }
+        case actionTypes.STORE_RESET_EMAIL:
+            return {
+                ...state,
+                resetEmail: action.email
+            }
+        case actionTypes.RESET_PASSWORD_FAIL: {
+            return {
+                ...state,
+                error: action.error
+            }
+        }
         default:
             return state;
     }

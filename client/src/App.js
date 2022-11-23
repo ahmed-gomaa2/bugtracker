@@ -14,6 +14,8 @@ import Workspace from "./screens/Dashboard/Body/Workspace/Workspace";
 import Settings from "./screens/Dashboard/Body/Settings/Settings";
 import Landing from "./screens/Landing/Landing";
 import Workspaces from "./screens/Dashboard/Body/WorkspacesContainer/WorkspacesContainer";
+import SendCode from "./screens/SendCode/SendCode";
+import VerifyCode from "./screens/VerifyCode/VerifyCode";
 
 function App(props) {
     useEffect(() => {
@@ -37,6 +39,20 @@ function App(props) {
                             <ProtectedRoute isAuthenticated={!props.isAuthenticated} route={'/dashboard'}>
                                 <Navbar>
                                     <Login />
+                                </Navbar>
+                            </ProtectedRoute>
+                        } />
+                        <Route exact path={'/send-code'} element={
+                            <ProtectedRoute isAuthenticated={!props.isAuthenticated} route={'/dashboard'}>
+                                <Navbar>
+                                    <SendCode />
+                                </Navbar>
+                            </ProtectedRoute>
+                        } />
+                        <Route exact path={'/verify-code'} element={
+                            <ProtectedRoute isAuthenticated={!props.isAuthenticated} route={'/dashboard'}>
+                                <Navbar>
+                                    <VerifyCode />
                                 </Navbar>
                             </ProtectedRoute>
                         } />

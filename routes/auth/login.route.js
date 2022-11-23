@@ -6,9 +6,10 @@ const jwtSecretKey = 'hellofromthisawesomeapplication';
 module.exports = app => {
     app.post('/login', (req, res) => {
         const {email, password} = req.body;
+        console.log(password)
         try{
             // Checking if the user does exist.
-            const findUserQuery = 'SELECT * FROM users WHERE email = ?';
+            const findUserQuery = 'SELECT * FROM user WHERE email = ?';
             connection.query(findUserQuery, email, async (findUserError, findUserRes) => {
                 if(findUserError) {
                     res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER WHILE FINDING THE USER IN THE DB!', err: findUserError}});

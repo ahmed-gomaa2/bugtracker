@@ -6,7 +6,7 @@ module.exports = app => {
         const user_id = req.user;
         try{
             //find the user in the db
-            const findUserQuery = 'SELECT * FROM users WHERE id = ?';
+            const findUserQuery = 'SELECT * FROM user WHERE id = ?';
             connection.query(findUserQuery, user_id, (findUserError, findUserRes) => {
                 if(findUserError) {
                     res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER WHILE TRYING TO FIND USER DATA!'}})

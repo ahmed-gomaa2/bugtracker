@@ -2,8 +2,11 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  height: 100%;
 
   .WorkspacesContainer__body {
     padding: 20px;
+    height: calc(100% - 50px);
+    overflow: auto;
   }
 }

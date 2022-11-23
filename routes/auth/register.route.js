@@ -9,7 +9,7 @@ module.exports = app => {
         const {username, email, password, admin} = req.body;
         try{
             // Check if the user already exists.
-            const userExistsQuery = 'SELECT * FROM users WHERE email = ?';
+            const userExistsQuery = 'SELECT * FROM user WHERE email = ?';
             connection.query(userExistsQuery, email, async (findUserError, findUserRes) => {
                 if(findUserError) {
                     console.log(findUserError);
@@ -24,7 +24,7 @@ module.exports = app => {
                     const hashedPassword = await bcrypt.hash(password, salt);
 
                     // Insert user into the database.
-                    const insertUserQuery = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+                    const insertUserQuery = 'INSERT INTO user (username, email, password) VALUES (?, ?, ?)';
                     connection.query(insertUserQuery, [username, email, hashedPassword], (insertUserError, insertUserRes) => {
                         if(insertUserError) {
                             res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER WHILE TRYING TO INSERT USER INTO DB!', err: insertUserError}});

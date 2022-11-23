@@ -30,7 +30,52 @@ module.exports = app => {
             if(findWorkspaceError) {
                 res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: findWorkspaceError}})
             } else {
-                res.send(findWorkspaceRes[0]);
+                const fetchWorkspaceTasksQuery = 'SELECT * FROM tasks WHERE workspace_id = ?';
+                connection.query(fetchWorkspaceTasksQuery, findWorkspaceRes[0].id, (fetchWorkspaceTasksError, fetchWorkspaceTasksRes) => {
+                    if(findWorkspaceError) {
+                        res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: fetchWorkspaceTasksError}})
+                    } else if(fetchWorkspaceTasksRes.length === 0) {
+                        res.status(200).send([]);
+                    }else {
+                        const tasks = [];
+                        for (let i = 0; i < fetchWorkspaceTasksRes.length; i++) {
+                            const fetchTasksEngineersQuery = 'SELECT * FROM task_user WHERE task_id = ?';
+                            connection.query(fetchTasksEngineersQuery, fetchWorkspaceTasksRes[i].id, (fetchTasksEngineersError, fetchTasksEngineersRes) => {
+                                if(fetchTasksEngineersError) {
+                                    res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: fetchTasksEngineersError}})
+                                } else if(fetchTasksEngineersRes.length === 0) {
+                                    const task = {
+                                        ...fetchWorkspaceTasksRes[i],
+                                        engineers: []
+                                    }
+                                    tasks.push(task);
+                                    if(i === fetchWorkspaceTasksRes.length - 1) {
+                                        const workspace = findWorkspaceRes[0];
+                                        const workspaceData = {
+                                            workspaceInfo: workspace,
+                                            workspaceTasks: tasks
+                                        }
+                                        res.status(200).send(workspaceData);
+                                    }
+                                }else {
+                                    const task = {
+                                        ...fetchWorkspaceTasksRes[i],
+                                        engineers: fetchTasksEngineersRes
+                                    }
+                                    tasks.push(task);
+                                    if(i === fetchWorkspaceTasksRes.length - 1) {
+                                        const workspace = findWorkspaceRes[0];
+                                        const workspaceData = {
+                                            workspaceInfo: workspace,
+                                            workspaceTasks: tasks
+                                        }
+                                        res.status(200).send(workspaceData);
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
             }
         });
     });

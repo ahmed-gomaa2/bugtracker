@@ -2,21 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa031f02-f3f1-4380-a407-2186fd0228cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/HOC/Navbar/Navbar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/Navbar/Navbar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/Navbar/Navbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/HOC/Navbar/Navbar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Login/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesContainer/WorkspacesContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesContainer/WorkspacesContainer.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/screens/Login/Login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Login/Login.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Register/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Register/Reigster.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Register/Reigster.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/action.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/action.types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/auth.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/auth.action.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/reducer/auth.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/auth.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/reducer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/auth/load.user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/load.user.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/auth/login.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/login.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/auth/register.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/register.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/workspaces/get.workspace.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspaces/get.workspace.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +25,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="5915443a-4d9e-4698-863a-c2c3df1b3421" />
+        <option name="url" value="https://github.com/ahmed-gomaa2/bugtracker.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -43,7 +50,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/prime-projects/bug-tracker&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/skillreactor&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -87,7 +94,24 @@
       <workItem from="1668051713498" duration="4373000" />
       <workItem from="1668056143671" duration="1782000" />
       <workItem from="1668068855630" duration="2074000" />
-      <workItem from="1668104559073" duration="6788000" />
+      <workItem from="1668104559073" duration="8080000" />
+      <workItem from="1668255070026" duration="7804000" />
+      <workItem from="1668299129374" duration="910000" />
+      <workItem from="1668322666030" duration="18152000" />
+      <workItem from="1668416140498" duration="1577000" />
+      <workItem from="1668469655468" duration="1957000" />
+      <workItem from="1668476535684" duration="2167000" />
+      <workItem from="1668556412977" duration="3017000" />
+      <workItem from="1668579703117" duration="8155000" />
+      <workItem from="1668668712575" duration="6845000" />
+      <workItem from="1668751947983" duration="933000" />
+      <workItem from="1668814018441" duration="1237000" />
+      <workItem from="1668816373858" duration="1141000" />
+      <workItem from="1668796459102" duration="8526000" />
+      <workItem from="1668968600195" duration="765000" />
+      <workItem from="1668969498832" duration="14681000" />
+      <workItem from="1669066555643" duration="4609000" />
+      <workItem from="1669145870434" duration="5888000" />
     </task>
     <servers />
   </component>
