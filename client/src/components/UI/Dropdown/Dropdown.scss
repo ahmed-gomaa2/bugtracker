@@ -1,0 +1,91 @@
+.WorkspacesItem__dropdown {
+  position: relative;
+  margin-left: auto;
+
+  .WorkspacesItem__dropdown--menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: lightgray;
+    opacity: 0.1;
+    z-index: 100;
+    display: none;
+    cursor: pointer;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  .WorkspacesItem__dropdown--menu {
+    width: 100px;
+    background-color: white;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+    z-index: 300;
+    flex-direction: column;
+    outline: 1px solid black;
+    min-width: 150px;
+    cursor: initial;
+
+    .WorkspacesItem__dropdown--menu-delete {
+      &:hover {
+        background: red;
+        color: white;
+      }
+    }
+
+    .WorkspacesItem__dropdown--menu-edit {
+      &:hover {
+        background: green;
+        color: white;
+      }
+    }
+
+    .WorkspacesItem__dropdown--menu-el {
+      color: black;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 5px;
+      width: 100%;
+      height: 40px;
+      padding-left: 10px;
+      cursor: pointer;
+      transition: all ease-in-out 0.2s;
+
+      i {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .WorkspacesItem__dropdown--menu-show {
+    display: flex;
+  }
+
+  .WorkspacesItem__dots {
+    width: 25px;
+    height: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    margin-left: auto;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+    align-items: center;
+    opacity: 0;
+
+    div {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: black;
+
+    }
+  }
+}

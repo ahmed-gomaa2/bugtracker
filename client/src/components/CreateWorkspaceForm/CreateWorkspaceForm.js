@@ -30,7 +30,7 @@ const CreateWorkspaceForm = props => {
     }
 
     return (
-        <div className={`CreateWorkspaceForm ${props.toggleForm && 'CreateWorkspaceForm__show'}`}>
+        <div className={`CreateWorkspaceForm ${props.toggleForm ? 'CreateWorkspaceForm__show' : 'CreateWorkspaceForm__hide'}`}>
             <div onClick={e => {
                 e.preventDefault();
                 e.stopPropagation();

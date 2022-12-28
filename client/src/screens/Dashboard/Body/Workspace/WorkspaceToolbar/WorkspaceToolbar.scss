@@ -1,0 +1,23 @@
+.WorkspaceToolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  .WorkspacesItem__dropdown {
+    .WorkspacesItem__dots {
+      div {
+        background: white;
+      }
+    }
+  }
+
+  &:hover {
+    .WorkspacesItem__dropdown {
+      .WorkspacesItem__dots {
+        opacity: 1;
+      }
+    }
+  }
+}

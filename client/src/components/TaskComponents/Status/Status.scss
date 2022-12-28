@@ -1,0 +1,31 @@
+.Status {
+
+  p {
+    padding: 0 10px;
+    border-radius: 50px;
+    text-align: center;
+    width: auto;
+    word-wrap: anywhere;
+    display: inline-block;
+  }
+
+  .status-1 {
+    background: #0d84e5;
+    color: white;
+  }
+
+  .status-2 {
+    background: #d1be5a;
+    color: white;
+  }
+
+  .status-3 {
+    background: #3eb53e;
+    color: white;
+  }
+
+  .status-4 {
+    background: #a1a1e8;
+    color: white;
+  }
+}

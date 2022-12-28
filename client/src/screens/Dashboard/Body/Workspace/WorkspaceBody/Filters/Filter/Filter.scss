@@ -1,0 +1,8 @@
+.Filters__element {
+  display: flex;
+  flex-direction: column;
+
+  .Filters__element-select {
+    border-radius: 5px;
+  }
+}

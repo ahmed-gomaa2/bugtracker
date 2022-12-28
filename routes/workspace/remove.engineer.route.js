@@ -24,8 +24,9 @@ const userAlreadyExists = (req, res, next) => {
     try{
         const data = req.body;
         const user = req.user;
+        console.log(data);
         const doesUserExistsQuery = 'SELECT * FROM task_user WHERE task_id = ? AND user_id = ?';
-        connection.query(doesUserExistsQuery, [data.id, data.user_id], (findUserError, findUserRes) => {
+        connection.query(doesUserExistsQuery, [data.task_id, data.user_id], (findUserError, findUserRes) => {
             if(findUserError) {
                 res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: findUserError}})
             }else if(findUserRes.length === 0) {
@@ -44,7 +45,7 @@ const taskExists = (req, res, next) => {
         const data = req.body;
         const user = req.user;
         const findTaskQuery = 'SELECT * FROM tasks WHERE id = ?';
-        connection.query(findTaskQuery, data.id, (findTaskError, findTaskRes) => {
+        connection.query(findTaskQuery, data.task_id, (findTaskError, findTaskRes) => {
             if(findTaskError) {
                 res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: findTaskError}})
             } else if(findTaskRes.length === 0) {
@@ -59,12 +60,12 @@ const taskExists = (req, res, next) => {
 }
 
 module.exports = app => {
-    app.delete('/workspace/delete-engineer', auth, userOwnTask, userAlreadyExists, taskExists, (req, res) => {
+    app.put('/workspace/delete-engineer', auth, userOwnTask, userAlreadyExists, taskExists, (req, res) => {
          try{
              const data = req.body;
              const user = req.user;
              const deleteEngineerQuery = 'DELETE FROM task_user WHERE task_id = ? AND user_id = ?';
-             connection.query(deleteEngineerQuery, [data.id, data.user_id], (deleteEngineerError, deleteEngineerRes) => {
+             connection.query(deleteEngineerQuery, [data.task_id, data.user_id], (deleteEngineerError, deleteEngineerRes) => {
                  if(deleteEngineerError) {
                      res.status(500).json({error: {type: 'server', msg:'SOMETHING WENT WRONG WITH THE SERVER!', err: deleteEngineerError}})
                  }else {

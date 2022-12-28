@@ -1,0 +1,39 @@
+.Type {
+  .Type__form {
+    z-index: 2;
+    position: relative;
+  }
+
+  p{
+    padding: 0 10px;
+    border-radius: 50px;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .type-1 {
+    background: red;
+    color: white;
+  }
+
+  .type-2 {
+    background: blue;
+    color: white;
+  }
+
+  .type-3 {
+    background: violet;
+    color: white;
+  }
+
+  .Type__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .01);
+    z-index: 1;
+    display: none;
+  }
+}

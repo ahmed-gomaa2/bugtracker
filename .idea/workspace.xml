@@ -3,19 +3,29 @@
   <component name="ChangeListManager">
     <list default="true" id="fa031f02-f3f1-4380-a407-2186fd0228cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesContainer/WorkspacesContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesContainer/WorkspacesContainer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CreateWorkspaceForm/CreateWorkspaceForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CreateWorkspaceForm/CreateWorkspaceForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CreateWorkspaceForm/CreateWorkspaceForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CreateWorkspaceForm/CreateWorkspaceForm.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Body.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Body.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Home/Toolbar/Toolbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Home/HomeToolbar/HomeToolbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Home/Toolbar/Toolbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Home/HomeToolbar/HomeToolbar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/Workspace.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/Workspace.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/Workspace.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/Workspace.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesContainer/Toolbar/Toolbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesContainer/WorkspacesContainerToolbar/WorkspacesContainerToolbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesContainer/Toolbar/Toolbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesContainer/WorkspacesContainerToolbar/WorkspacesContainerToolbar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesContainer/WorkspacesContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesContainer/WorkspacesContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesList/WorkspacesListItem/WorkspacesListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesList/WorkspacesListItem/WorkspacesListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesList/WorkspacesListItem/WorkspacesListItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesList/WorkspacesListItem/WorkspacesListItem.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Dashboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Dashboard.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/screens/Login/Login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Login/Login.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Login/fixied.scss" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/action.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/action.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/action/auth.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/auth.action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/reducer/auth.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/auth.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/auth/load.user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/load.user.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/action/workspace.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/workspace.action.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/reducer/workspaces.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/workspaces.reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/auth/login.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/login.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/auth/register.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/register.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/workspaces/get.workspace.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspaces/get.workspace.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/workspace/add.engineer.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspace/add.engineer.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/workspace/remove.engineer.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspace/remove.engineer.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +121,31 @@
       <workItem from="1668968600195" duration="765000" />
       <workItem from="1668969498832" duration="14681000" />
       <workItem from="1669066555643" duration="4609000" />
-      <workItem from="1669145870434" duration="5888000" />
+      <workItem from="1669145870434" duration="11769000" />
+      <workItem from="1669421042354" duration="14462000" />
+      <workItem from="1669494654056" duration="10819000" />
+      <workItem from="1669624308063" duration="7526000" />
+      <workItem from="1669783611483" duration="1940000" />
+      <workItem from="1669848217185" duration="896000" />
+      <workItem from="1669966387205" duration="18022000" />
+      <workItem from="1670171158186" duration="354000" />
+      <workItem from="1670253737983" duration="998000" />
+      <workItem from="1670333626741" duration="1213000" />
+      <workItem from="1670502759108" duration="3037000" />
+      <workItem from="1670888278185" duration="527000" />
+      <workItem from="1671191192664" duration="370000" />
+      <workItem from="1671480835883" duration="625000" />
+      <workItem from="1671496786418" duration="845000" />
+      <workItem from="1671525642385" duration="5363000" />
+      <workItem from="1671704169848" duration="7052000" />
+      <workItem from="1671806485444" duration="7202000" />
+      <workItem from="1671920582485" duration="6587000" />
+      <workItem from="1671962116013" duration="1188000" />
+      <workItem from="1672067409334" duration="7318000" />
+      <workItem from="1672101906664" duration="818000" />
+      <workItem from="1672148405742" duration="11072000" />
+      <workItem from="1672177736143" duration="2741000" />
+      <workItem from="1672232019727" duration="2668000" />
     </task>
     <servers />
   </component>

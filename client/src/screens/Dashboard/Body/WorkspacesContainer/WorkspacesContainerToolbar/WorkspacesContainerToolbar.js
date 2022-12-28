@@ -1,19 +1,19 @@
 import React from 'react';
-import './Toolbar.scss';
+import './WorkspacesContainerToolbar.scss';
 import {connect} from "react-redux";
 import {toggleWorkspaceCreateForm} from "../../../../../store/action/ui.action";
 
-const Toolbar = props => {
+const WorkspacesContainerToolbar = props => {
     return (
-        <div className={'Toolbar'}>
-            <div className="Toolbar__header">
+        <div className={'WorkspacesContainerToolbar'}>
+            <div className="WorkspacesContainerToolbar__header">
                 <h3>Workspaces</h3>
             </div>
             <p onClick={e => {
                 e.preventDefault();
                 e.stopPropagation();
                 props.toggleWorkspaceCreateForm();
-            }} className="Toolbar__add">
+            }} className="WorkspacesContainerToolbar__add">
                 <i className="fa-solid fa-plus"></i>
                 <span>Add New</span>
             </p>
@@ -21,4 +21,4 @@ const Toolbar = props => {
     );
 };
 
-export default connect(null, {toggleWorkspaceCreateForm}) (Toolbar);
+export default connect(null, {toggleWorkspaceCreateForm}) (WorkspacesContainerToolbar);

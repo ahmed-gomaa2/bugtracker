@@ -34,7 +34,7 @@ module.exports = app => {
                             payload,
                             jwtSecretKey,
                             {
-                                expiresIn: '350000'
+                                expiresIn: '3500000'
                             },
                             (jwtErr, token) => {
                                 if(jwtErr) {
