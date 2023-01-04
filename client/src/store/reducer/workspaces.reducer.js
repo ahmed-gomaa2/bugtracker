@@ -61,7 +61,8 @@ export default (state = initialState, action) => {
             workspacesCopy[index] = action.workspace;
             return {
                 ...state,
-                workspaces: workspacesCopy
+                workspaces: workspacesCopy,
+                currentWorkspaceData: action.workspace
             }
         case actionTypes.FETCH_WORKSPACE_DATA_SUCCESS:
             return {
@@ -91,43 +92,79 @@ export default (state = initialState, action) => {
                 filteredWorkspaceTasks: filteredTasks
             }
         case actionTypes.REMOVE_ENGINEER_FROM_TASK_SUCCESS:
-            let modifiedTask = {...state.currentWorkspaceTasks.filter(t => t.id === action.task_id)[0]};
-            modifiedTask = {
-                ...modifiedTask,
-                engineers: [...modifiedTask.engineers.filter(eng => eng.user_id !== action.user_id)]
-            };
-            console.log(modifiedTask);
-            const filteredWorkspaceTasksCopy = [...state.filteredWorkspaceTasks];
-            console.log(filteredWorkspaceTasksCopy.filter(t => t.id === action.task_id)[0])
-            const indexOfTask = filteredWorkspaceTasksCopy.indexOf(filteredWorkspaceTasksCopy.filter(t => t.id === action.task_id)[0]);
-            filteredWorkspaceTasksCopy[indexOfTask] = modifiedTask;
-            const currentWorkspaceTasksCopy = [...state.currentWorkspaceTasks];
-            const indexOfTaskInCurrent = currentWorkspaceTasksCopy.indexOf(currentWorkspaceTasksCopy.filter(t => t.id === action.task_id)[0]);
-            currentWorkspaceTasksCopy[indexOfTaskInCurrent] = modifiedTask;
-            console.log(currentWorkspaceTasksCopy, filteredWorkspaceTasksCopy)
-            return {
-                ...state,
-                currentWorkspaceTasks: currentWorkspaceTasksCopy,
-                filteredWorkspaceTasks: filteredWorkspaceTasksCopy
-            }
+            return (() => {
+                let modifiedTask = {...state.currentWorkspaceTasks.filter(t => t.id === action.task_id)[0]};
+                modifiedTask = {
+                    ...modifiedTask,
+                    engineers: [...modifiedTask.engineers.filter(eng => eng.user_id !== action.user_id)]
+                };
+                const filteredWorkspaceTasksCopy = [...state.filteredWorkspaceTasks];
+                const indexOfTask = filteredWorkspaceTasksCopy.indexOf(filteredWorkspaceTasksCopy.filter(t => t.id === action.task_id)[0]);
+                filteredWorkspaceTasksCopy[indexOfTask] = modifiedTask;
+                const currentWorkspaceTasksCopy = [...state.currentWorkspaceTasks];
+                const indexOfTaskInCurrent = currentWorkspaceTasksCopy.indexOf(currentWorkspaceTasksCopy.filter(t => t.id === action.task_id)[0]);
+                currentWorkspaceTasksCopy[indexOfTaskInCurrent] = modifiedTask;
+                return {
+                    ...state,
+                    currentWorkspaceTasks: currentWorkspaceTasksCopy,
+                    filteredWorkspaceTasks: filteredWorkspaceTasksCopy
+                }
 
+            })();
         case actionTypes.ADD_ENGINEER_TO_TASK_SUCCESS:
-            let modifiedTaskToAdd = {...state.currentWorkspaceTasks.filter(t => t.id === action.task_id)[0]};
-            modifiedTaskToAdd = {
-                ...modifiedTaskToAdd,
-                engineers: [...modifiedTaskToAdd.engineers, action.user_data]
-            }
-            const currentWorkspaceTasksAnotherCopy = [...state.currentWorkspaceTasks];
-            const indexOfTaskInCurrentAnotherCopy = currentWorkspaceTasksAnotherCopy.indexOf(currentWorkspaceTasksAnotherCopy.filter(t => t.id === action.task_id)[0]);
-            currentWorkspaceTasksAnotherCopy[indexOfTaskInCurrentAnotherCopy] = modifiedTaskToAdd;
-            const filteredWorkspaceTasksAnotherCopy = [...state.filteredWorkspaceTasks];
-            const indexOfTaskFilteredAnotherCopy = filteredWorkspaceTasksAnotherCopy.indexOf(filteredWorkspaceTasksAnotherCopy.filter(t => t.id === action.task_id)[0]);
-            filteredWorkspaceTasksAnotherCopy[indexOfTaskFilteredAnotherCopy] = modifiedTaskToAdd;
-            return {
-                ...state,
-                currentWorkspaceTasks: currentWorkspaceTasksAnotherCopy,
-                filteredWorkspaceTasks: filteredWorkspaceTasksAnotherCopy
-            }
+            return (() => {
+                let modifiedTask = {...state.currentWorkspaceTasks.filter(t => t.id === action.task_id)[0]};
+                modifiedTask = {
+                    ...modifiedTask,
+                    engineers: [...modifiedTask.engineers, action.user_data]
+                }
+                const currentWorkspaceTasksCopy = [...state.currentWorkspaceTasks];
+                const taskIndexInCurrentWorkspaceTasks = currentWorkspaceTasksCopy.indexOf(currentWorkspaceTasksCopy.filter(t => t.id === action.task_id)[0]);
+                currentWorkspaceTasksCopy[taskIndexInCurrentWorkspaceTasks] = modifiedTask;
+                const filteredWorkspaceTasksCopy = [...state.filteredWorkspaceTasks];
+                const taskIndexInFilteredTasks = filteredWorkspaceTasksCopy.indexOf(filteredWorkspaceTasksCopy.filter(t => t.id === action.task_id)[0]);
+                filteredWorkspaceTasksCopy[taskIndexInFilteredTasks] = modifiedTask;
+                return {
+                    ...state,
+                    currentWorkspaceTasks: currentWorkspaceTasksCopy,
+                    filteredWorkspaceTasks: filteredWorkspaceTasksCopy
+                }
+            })();
+
+        case actionTypes.CHANGE_TASK_TYPE_SUCCESS:
+            return (() => {
+                const currentWorkspaceTasksCopy = [...state.currentWorkspaceTasks];
+                const modifiedTask = {...currentWorkspaceTasksCopy.filter(t => t.id === action.task_id)[0]};
+                modifiedTask.type = +action.newType;
+                console.log(modifiedTask)
+                const taskIndexInCurrentWorkspaceTasks = currentWorkspaceTasksCopy.indexOf(currentWorkspaceTasksCopy.filter(t=> t.id === action.task_id)[0]);
+                currentWorkspaceTasksCopy[taskIndexInCurrentWorkspaceTasks] = modifiedTask;
+                const filteredWorkspaceTasksCopy = [...state.filteredWorkspaceTasks];
+                const taskIndexInFilteredWorkspaceTasks = filteredWorkspaceTasksCopy.indexOf(filteredWorkspaceTasksCopy.filter(t => t.id === action.task_id)[0]);
+                filteredWorkspaceTasksCopy[taskIndexInFilteredWorkspaceTasks] = modifiedTask;
+                return {
+                    ...state,
+                    currentWorkspaceTasks: currentWorkspaceTasksCopy,
+                    filteredWorkspaceTasks: filteredWorkspaceTasksCopy
+                }
+            })();
+        case actionTypes.CHANGE_TASK_STATUS_SUCCESS:
+            return (() => {
+                const currentWorkspaceTasksCopy = [...state.currentWorkspaceTasks];
+                const modifiedTask = {...currentWorkspaceTasksCopy.filter(t => t.id == action.task_id)[0]};
+                modifiedTask.status = +action.newStatus;
+                const taskIndexInCurrentWorkspaceTasks = currentWorkspaceTasksCopy.indexOf(currentWorkspaceTasksCopy.filter(t => t.id == action.task_id)[0]);
+                currentWorkspaceTasksCopy[taskIndexInCurrentWorkspaceTasks] = modifiedTask;
+                const filteredTasksCopy = [...state.filteredWorkspaceTasks];
+                const taskIndexInFilteredTasks = filteredTasksCopy.indexOf(filteredTasksCopy.filter(t => t.id == action.task_id)[0]);
+                filteredTasksCopy[taskIndexInFilteredTasks] = modifiedTask;
+                return {
+                    ...state,
+                    currentWorkspaceTasks: currentWorkspaceTasksCopy,
+                    filteredWorkspaceTasks: filteredTasksCopy
+                }
+
+            })();
         default:
             return state;
     }

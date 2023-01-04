@@ -19,7 +19,7 @@ const Filter = props => {
             <select onChange={filterChangeHandler} name="type" id="type" className="Filters__element-select">
                 {
                     Object.keys(props.filters[props.filter]).map((v, i) => (
-                        <option >{props.filters[props.filter][v]}</option>
+                        <option key={i}>{props.filters[props.filter][v]}</option>
                     ))
                 }
             </select>

@@ -31,7 +31,7 @@ const TasksContainer = props => {
                 {/*</thead>*/}
                 {/*<tbody>*/}
                     {
-                        props.tasks.map((t, i) => (
+                        props.tasks.length > 0 && props.tasks.map((t, i) => (
                             <Task task={t} key={i} />
                         ))
                     }

@@ -4,7 +4,6 @@ const jwtSecretKey = 'hellofromthisawesomeapplication';
 
 module.exports = (req, res, next) => {
     const token = req.header('x-auth-token');
-    console.log(req.body);
     if(!token) {
         return res.status(400).json({error: {type: 'jwt', msg: 'THERE IS NO TOKEN!'}});
     }else {

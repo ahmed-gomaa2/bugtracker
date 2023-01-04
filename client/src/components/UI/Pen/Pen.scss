@@ -1,0 +1,40 @@
+.Pen {
+  position: absolute;
+  top: -150%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  padding: 2px 7px;
+  border-radius: 2px;
+  outline: 1px solid black;
+  animation: fadeIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+
+  .arrow {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+  }
+
+  i {
+    color: white !important;
+    font-size: 10px;
+  }
+
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity:1;
+  }
+}

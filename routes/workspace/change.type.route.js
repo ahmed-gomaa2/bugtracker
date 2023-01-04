@@ -20,19 +20,37 @@ const userOwnTask = (req, res, next) => {
     }
 }
 
+const taskExists = (req, res, next) => {
+    try{
+        const data = req.body;
+        const user = req.user;
+        const findTaskInWorkspace = 'SELECT * FROM tasks WHERE id = ?';
+        connection.query(findTaskInWorkspace, data.id, (findTaskRes, findTaskError) => {
+            if(findTaskError) {
+                res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: findTaskError}})
+            }else if(findTaskRes.length === 0) {
+                res.status(400).json({error: {type: 'client', msg: 'THIS TASK DOESN\'T EXIST!'}})
+            }else {
+                next();
+            }
+        })
+    }catch (e) {
+        res.status(500).json({error: {type: 'client', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: e}})
+    }
+}
+
 module.exports = app => {
     app.put('/workspace/edit-type', auth, userOwnTask, (req, res) => {
         const user = req.user;
         const data = req.body;
 
-         const editTypeQuery = 'UPDATE tasks SET type = ? WHERE id = ?';
-         connection.query(editTypeQuery, [data.type, data.id], (editTypeError, editTypeRes) => {
-             if(editTypeError) {
-                 res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: editTypeError}})
-             }else {
-                 res.status(200).send(data);
-             }
-         })
-
+        const editTypeQuery = 'UPDATE tasks SET type = ? WHERE id = ?';
+        connection.query(editTypeQuery, [data.type, data.id], (editTypeError, editTypeRes) => {
+            if(editTypeError) {
+                res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: editTypeError}})
+            }else {
+                res.status(200).send(data);
+            }
+        })
     });
 }

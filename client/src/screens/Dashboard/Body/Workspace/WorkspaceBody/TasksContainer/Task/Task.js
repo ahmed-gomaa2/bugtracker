@@ -13,11 +13,11 @@ import Link from "../../../../../../../components/TaskComponents/Link/Link";
 
 const Task = props => {
     return (
-        <tr className={'Task'}>
+        <tr className={`Task ${props.task.status == 4 && 'Task__done'}`}>
             <Title title={props.task.title} />
             {/*<Description description={props.task.description} />*/}
-            <Type type={props.task.type} />
-            <Status status={props.task.status} />
+            <Type task={props.task} type={props.task.type} />
+            <Status task={props.task} status={props.task.status} />
             {/*<Solution solution={props.task.solution} />*/}
             <Start start_date={props.task.start_date} />
             <End end_date={props.task.end_date} />

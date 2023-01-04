@@ -30,13 +30,20 @@ module.exports = app => {
             if(findWorkspaceError) {
                 res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: findWorkspaceError}})
             } else {
+                console.log(findWorkspaceRes)
                 const fetchWorkspaceTasksQuery = 'SELECT * FROM tasks WHERE workspace_id = ?';
                 connection.query(fetchWorkspaceTasksQuery, findWorkspaceRes[0].id, (fetchWorkspaceTasksError, fetchWorkspaceTasksRes) => {
                     if(findWorkspaceError) {
                         res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: fetchWorkspaceTasksError}})
                     } else if(fetchWorkspaceTasksRes.length === 0) {
-                        res.status(200).send([]);
+                        const workspace = findWorkspaceRes[0];
+                        const workspaceData = {
+                            workspaceInfo: workspace,
+                            workspaceTasks: []
+                        }
+                        res.status(200).send(workspaceData);
                     }else {
+                        console.log(fetchWorkspaceTasksRes)
                         const tasks = [];
                         for (let i = 0; i < fetchWorkspaceTasksRes.length; i++) {
                             const fetchTasksEngineersQuery = 'SELECT * FROM task_user WHERE task_id = ?';
@@ -67,7 +74,7 @@ module.exports = app => {
                                         const workspace = findWorkspaceRes[0];
                                         const workspaceData = {
                                             workspaceInfo: workspace,
-                                            workspaceTasks: tasks
+                                            workspaceTasks: tasks.length > 0 ? tasks : []
                                         }
                                         res.status(200).send(workspaceData);
                                     }

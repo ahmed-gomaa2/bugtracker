@@ -7,6 +7,7 @@ import {fetchWorkspaceData} from "../../../../store/action/workspace.action";
 import Toolbar from "../../../../components/HOC/Toolbar/Toolbar";
 import WorkspaceBody from "./WorkspaceBody/WorkspaceBody";
 import Spinner from "../../../../components/UI/Spinner/Spinner";
+import CreateTask from "../../../../components/CreateTask/CreateTask";
 
 const Workspace = props => {
     const {workspace_id} = useParams();
@@ -30,6 +31,7 @@ const Workspace = props => {
                     <WorkspaceBody />
                 </>
             )}
+            <CreateTask />
         </div>
     );
 };

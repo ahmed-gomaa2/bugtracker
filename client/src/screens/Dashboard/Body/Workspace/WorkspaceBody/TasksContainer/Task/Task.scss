@@ -17,3 +17,12 @@
     font-family: cursive;
   }
 }
+
+.Task__done {
+  background: green;
+  //opacity: 0.3;
+
+  * {
+    color: white;
+  }
+}

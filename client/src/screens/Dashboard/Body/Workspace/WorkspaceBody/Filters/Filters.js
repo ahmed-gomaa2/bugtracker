@@ -13,7 +13,8 @@ const filters = {
         0: 'All',
         1: 'Not Started',
         2: 'In Progress',
-        3: 'Completed'
+        3: 'to be tested',
+        4: 'done'
     },
     priority: {
         0: 'All',
@@ -30,7 +31,7 @@ const Filters = props => {
             <div className="Filters__container">
                 {
                     Object.keys(filters).map((k, i) => (
-                        <Filter filter={k} index={i} filters={filters} />
+                        <Filter key={i} filter={k} index={i} filters={filters} />
                     ))
                 }
             </div>
