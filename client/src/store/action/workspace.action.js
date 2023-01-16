@@ -3,6 +3,10 @@ import {
     ADD_ENGINEER_TO_TASK_FAIL,
     ADD_ENGINEER_TO_TASK_SUCCESS,
     CHANGE_FILTER,
+    CHANGE_TASK_END_DATE_FAIL,
+    CHANGE_TASK_END_DATE_SUCCESS,
+    CHANGE_TASK_PRIORITY_FAIL,
+    CHANGE_TASK_PRIORITY_SUCCESS,
     CHANGE_TASK_STATUS_FAIL,
     CHANGE_TASK_STATUS_SUCCESS,
     CHANGE_TASK_TYPE_FAIL,
@@ -212,5 +216,56 @@ export const changeStatus = (id, status, workspace_id) => async dispatch => {
         dispatch({
             type: CHANGE_TASK_STATUS_FAIL
         })
+    }
+}
+
+export const changePriority = (id, priority, workspace_id) => async dispatch => {
+    try{
+        const data = {
+            id,
+            priority,
+            workspace_id
+        };
+        const res = await axios.put('/workspace/edit-priority', data);
+        dispatch({
+            type: CHANGE_TASK_PRIORITY_SUCCESS,
+            task_id: res.data.id,
+            workspace_id: res.data.workspace_id,
+            newPriority: res.data.priority
+        });
+    }catch (e) {
+        dispatch({
+            type: CHANGE_TASK_PRIORITY_FAIL
+        })
+    }
+}
+
+export const changeEndDate = (id, end_date, workspace_id) => async dispatch => {
+    try {
+        const data = {
+            id,
+            end_date,
+            workspace_id
+        };
+
+        const res = await axios.put('/workspace/edit-end-date', data);
+        dispatch({
+            type: CHANGE_TASK_END_DATE_SUCCESS,
+            workspace_id: res.data.workspace_id,
+            newDate: res.data.end_date,
+            task_id: res.data.id
+        });
+    }catch (e) {
+        dispatch({
+            type: CHANGE_TASK_END_DATE_FAIL
+        })
+    }
+}
+
+export const getTask = (workspace_id, id) => async dispatch => {
+    try {
+
+    }catch (e) {
+
     }
 }

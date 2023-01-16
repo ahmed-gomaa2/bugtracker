@@ -1,5 +1,5 @@
 import React from 'react';
-import './Task.scss';
+import './TaskRow.scss';
 import Title from "../../../../../../../components/TaskComponents/Title/Title";
 import Description from "../../../../../../../components/TaskComponents/Description/Description";
 import Type from "../../../../../../../components/TaskComponents/Type/Type";
@@ -11,21 +11,21 @@ import Priority from "../../../../../../../components/TaskComponents/Priority/Pr
 import Assignees from "../../../../../../../components/TaskComponents/Assignees/Assignees";
 import Link from "../../../../../../../components/TaskComponents/Link/Link";
 
-const Task = props => {
+const TaskRow = props => {
     return (
-        <tr className={`Task ${props.task.status == 4 && 'Task__done'}`}>
+        <tr className={`TaskRow ${props.task.status == 4 && 'TaskRow__done'}`}>
             <Title title={props.task.title} />
             {/*<Description description={props.task.description} />*/}
             <Type task={props.task} type={props.task.type} />
             <Status task={props.task} status={props.task.status} />
             {/*<Solution solution={props.task.solution} />*/}
             <Start start_date={props.task.start_date} />
-            <End end_date={props.task.end_date} />
-            <Priority priority={props.task.priority} />
+            <End task={props.task} end_date={props.task.end_date} />
+            <Priority task={props.task} priority={props.task.priority} />
             <Assignees task={props.task} engineers={props.task.engineers} />
-            <Link  />
+            <Link task={props.task} />
         </tr>
     );
 };
 
-export default Task;
+export default TaskRow;

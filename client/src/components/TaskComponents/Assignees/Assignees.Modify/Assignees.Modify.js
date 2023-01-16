@@ -11,7 +11,6 @@ const AssigneesModify = props => {
 
     const handleInputChange = (e) => {
         setSearchTerm(e.target.value);
-        // props.updateSearchTerm(e.target.value)
         let value = e.target.value;
         let usersMatch = [];
 

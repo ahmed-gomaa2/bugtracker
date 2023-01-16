@@ -1,12 +1,13 @@
-.Task {
+.TaskRow {
   border-collapse: collapse;
+  border-bottom: 1px solid lightgray;
   &:nth-child(even) {
     //background: #fbf7f7;
     //color: black;
   }
   td {
     //border: 1px solid black;
-    border-bottom: 1px solid lightgray;
+    //border-bottom: 1px solid lightgray;
     border-collapse: collapse;
     padding: 5px 10px;
     //margin-right: 10px;
@@ -18,7 +19,7 @@
   }
 }
 
-.Task__done {
+.TaskRow__done {
   background: green;
   //opacity: 0.3;
 

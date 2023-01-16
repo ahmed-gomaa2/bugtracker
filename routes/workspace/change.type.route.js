@@ -5,16 +5,20 @@ const userOwnTask = (req, res, next) => {
     try{
         const data = req.body;
         const user = req.user;
-        const findWorkspaceOwner = 'SELECT * FROM workspaces WHERE owner_id = ? AND id = ?';
-        connection.query(findWorkspaceOwner, [user, data.workspace_id], (findOwnerError, findOwnerRes) => {
-            if(findOwnerError) {
-                res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: findOwnerError}})
-            } else if(findOwnerRes.length === 0) {
-                res.status(400).json({error: {type: 'client', msg: 'YOU ARE NOT ALLOWED TO EDIT THIS TASK!'}})
-            }else {
-                next();
-            }
-        });
+        if(data.type >= 1 && data.type <=3) {
+            const findWorkspaceOwner = 'SELECT * FROM workspaces WHERE owner_id = ? AND id = ?';
+            connection.query(findWorkspaceOwner, [user, data.workspace_id], (findOwnerError, findOwnerRes) => {
+                if(findOwnerError) {
+                    res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: findOwnerError}})
+                } else if(findOwnerRes.length === 0) {
+                    res.status(400).json({error: {type: 'client', msg: 'YOU ARE NOT ALLOWED TO EDIT THIS TASK!'}})
+                }else {
+                    next();
+                }
+            });
+        }else {
+            res.status(400).json({error: {type: 'client', msg: 'THIS VALUE IS NOT SUPPORTED!'}})
+        }
     }catch (e) {
         res.status(500).json({error: {type: 'client', msg: 'YOU DON\'T HAVE ACCESS TO THIS TASK!', err: e}})
     }

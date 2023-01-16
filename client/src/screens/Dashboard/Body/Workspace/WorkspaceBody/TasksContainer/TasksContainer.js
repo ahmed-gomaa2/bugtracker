@@ -1,7 +1,7 @@
 import React from 'react';
 import './TasksContainer.scss';
 import {connect} from "react-redux";
-import Task from "./Task/Task";
+import TaskRow from "./TaskRow/TaskRow";
 
 const tableHeads = [
     'Title',
@@ -32,7 +32,7 @@ const TasksContainer = props => {
                 {/*<tbody>*/}
                     {
                         props.tasks.length > 0 && props.tasks.map((t, i) => (
-                            <Task task={t} key={i} />
+                            <TaskRow task={t} key={i} />
                         ))
                     }
                 {/*</tbody>*/}

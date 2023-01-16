@@ -1,6 +1,7 @@
 import React from 'react';
 import {filterTasks} from "../../../../../../../store/action/workspace.action";
 import {connect} from "react-redux";
+import './Filter.scss';
 
 const Filter = props => {
     const getKeyValue = (e) => {

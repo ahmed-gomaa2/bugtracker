@@ -16,6 +16,7 @@ import Landing from "./screens/Landing/Landing";
 import Workspaces from "./screens/Dashboard/Body/WorkspacesContainer/WorkspacesContainer";
 import SendCode from "./screens/SendCode/SendCode";
 import VerifyCode from "./screens/VerifyCode/VerifyCode";
+import Task from "./screens/Task/Task";
 
 function App(props) {
     useEffect(() => {
@@ -58,7 +59,9 @@ function App(props) {
                         } />
                         <Route exact path={'/'} element={
                             <ProtectedRoute isAuthenticated={!props.isAuthenticated} route={'/dashboard'}>
-                                <Landing />
+                                <Navbar>
+                                    <Landing />
+                                </Navbar>
                             </ProtectedRoute>
                         } />
 
@@ -70,6 +73,7 @@ function App(props) {
                             <Route exact path={'/dashboard/home'} element={<Home />} />
                             <Route exact path={'/dashboard/workspaces'} element={<Workspaces />} />
                             <Route exact path={'/dashboard/workspaces/:workspace_id'} element={<Workspace />} />
+                            <Route exact path={'/dashboard/workspaces/:workspace_id/task/:task_id'} element={<Task />} />
                             <Route exact path={'/dashboard/settings'} element={<Settings />} />
                         </Route>
                     </Routes>

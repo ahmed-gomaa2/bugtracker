@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './Status.scss';
 import {connect} from "react-redux";
 import Pen from "../../UI/Pen/Pen";
@@ -38,10 +38,6 @@ const Status = props => {
     }
 
     const statusSelectRender = () => {
-        // return Object.keys(status).map((s, i) => (
-        //             <p onClick={e => statusClickHandler(s)} className={`status status-${s}`}>{status[s].icon}<span>{status[s].name}</span>
-        //             </p>
-        //        ))
         return Object.keys(status).map((s, i) => {
             return s != 4 ? (
                 <p key={i} onClick={e => statusClickHandler(s)} className={`option status status-${s}`}>{status[s].icon}<span>{status[s].name}</span></p>
@@ -50,13 +46,32 @@ const Status = props => {
             )
         })
     }
+    const dropdownRef = useRef();
+
+    useEffect(() => {
+        if(dropdownRef.current){
+            const elRect = dropdownRef.current.getBoundingClientRect();
+            const fromBottom = window.innerHeight - elRect.bottom;
+            const fromRight = window.innerWidth - elRect.right;
+            if(fromRight < 0 && fromBottom < 0) {
+                dropdownRef.current.style.transform = `translate(-${Math.abs(fromRight)}px, -${Math.abs(fromBottom)}px)`
+            } else if(fromRight < 0) {
+                dropdownRef.current.style.transform = `translateX(-${Math.abs(fromRight)}px)`
+            }else if(fromBottom < 0) {
+                dropdownRef.current.style.transform = `translateY(-${Math.abs(fromBottom)}px)`
+            } else {
+                dropdownRef.current.style.transform = 'none';
+            }
+
+        }
+    }, [editing]);
     return (
         <td className={'Status'}>
             {
                 editing ? (
                     <div className="Status__select">
                         <p className={`status status-${props.status}`}>{status[props.status].icon}<span>{status[props.status].name}</span></p>
-                        <div className="Status__options">
+                        <div ref={dropdownRef} className="Status__options">
                             {
                                 statusSelectRender()
                             }

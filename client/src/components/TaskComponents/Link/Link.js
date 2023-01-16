@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 const Link = props => {
     return (
         <td className={'Link'}>
-            <NavLink to={''}><i className="fa-solid fa-link"></i></NavLink>
+            <NavLink to={`/dashboard/workspaces/${props.task.workspace_id}/task/${props.task.id}`}><i className="fa-solid fa-link"></i></NavLink>
         </td>
     );
 };

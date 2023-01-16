@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './Type.scss';
 import {connect} from "react-redux";
 import {changeType} from "../../../store/action/workspace.action";
@@ -25,7 +25,6 @@ const Type = props => {
     const [hovered, setHovered] = useState(false);
 
     const selectFocusHandler = e => {
-        console.log(e);
         e.target.style.childNodes[1].clientHeight = '100px';
     }
 
@@ -35,13 +34,33 @@ const Type = props => {
         }
         setEditing(false);
     }
+
+    const dropdownRef = useRef();
+
+    useEffect(() => {
+        if(dropdownRef.current){
+            const elRect = dropdownRef.current.getBoundingClientRect();
+            const fromBottom = window.innerHeight - elRect.bottom;
+            const fromRight = window.innerWidth - elRect.right;
+            if(fromRight < 0 && fromBottom < 0) {
+                dropdownRef.current.style.transform = `translate(-${Math.abs(fromRight)}px, -${Math.abs(fromBottom)}px)`
+            } else if(fromRight < 0) {
+                dropdownRef.current.style.transform = `translateX(-${Math.abs(fromRight)}px)`
+            }else if(fromBottom < 0) {
+                dropdownRef.current.style.transform = `translateY(-${Math.abs(fromBottom)}px)`
+            } else {
+                dropdownRef.current.style.transform = 'none';
+            }
+
+        }
+    }, [editing]);
     return (
         <td className={'Type'}>
             {
                 editing ? (
                     <div className="Type__select">
                         <p onClick={e => setEditing(true)} className={`type type-${props.type}`}>{types[props.type].icon}<span>{types[props.type].name}</span></p>
-                        <div className="Type__options">
+                        <div ref={dropdownRef} className="Type__options">
                             {
                                 Object.keys(types).map((t, i) => (
                                     <p key={i} onClick={e => typeClickHandler(t)} className={`option type type-${t}`}>{types[t].icon}<span>{types[t].name}</span></p>

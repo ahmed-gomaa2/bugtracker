@@ -1,0 +1,52 @@
+.End {
+  .End__date {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+    i{
+      margin-left: auto;
+      display: inline-block;
+    }
+  }
+
+  .End__select-date {
+    .End__calender {
+      position: relative;
+      z-index: 2;
+
+      input {
+        height: 30px;
+      }
+
+      button {
+        padding: 5px;
+        height: 30px;
+        width: 30px;
+        border: none;
+        background-color: #8ee38e;
+        cursor: pointer;
+
+        &:hover {
+          background-color: green;
+
+        }
+
+        i {
+          color: white;
+        }
+      }
+    }
+    .End__backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+      cursor: pointer;
+    }
+  }
+}

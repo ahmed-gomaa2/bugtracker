@@ -3,25 +3,33 @@
   <component name="ChangeListManager">
     <list default="true" id="fa031f02-f3f1-4380-a407-2186fd0228cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Assignees/Assignees.Modify/Assignees.Modify.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Assignees/Assignees.Modify/Assignees.Modify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Assignees/Assignees.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Assignees/Assignees.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/End/End.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/End/End.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/End/End.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/End/End.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Link/Link.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Link/Link.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Priority/Priority.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Priority/Priority.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Priority/Priority.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Priority/Priority.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Status/Status.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Status/Status.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Status/Status.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Status/Status.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Type/Type.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Type/Type.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Type/Type.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Type/Type.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/Workspace.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/Workspace.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filter/Filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filter/Filter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/Task/Task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/Task/Task.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/Task/Task.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filter/Filter.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filter/Filter.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filters.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filters.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/TaskRow/TaskRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/Task/Task.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/TaskRow/TaskRow.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/TasksContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/TasksContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/TasksContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/TasksContainer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/WorkspaceBody.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/WorkspaceBody.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/action.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/action.types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/workspace.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/workspace.action.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/reducer/workspaces.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/workspaces.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/auth.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/auth.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utls/date.format.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utls/date.format.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/workspace/change.status.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspace/change.status.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/workspace/change.type.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspace/change.type.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/workspaces/get.workspace.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspaces/get.workspace.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,17 +58,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Projects/skillreactor&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/prime-projects",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\prime-projects\bug-tracker\client\src\screens\Dashboard\Body\Home" />
@@ -146,7 +154,14 @@
       <workItem from="1672401201702" duration="15392000" />
       <workItem from="1672692641376" duration="5000" />
       <workItem from="1672705358964" duration="8926000" />
-      <workItem from="1672791676153" duration="6713000" />
+      <workItem from="1672791676153" duration="7106000" />
+      <workItem from="1672829581870" duration="16790000" />
+      <workItem from="1673026306815" duration="7199000" />
+      <workItem from="1673136069433" duration="2176000" />
+      <workItem from="1673179231216" duration="10591000" />
+      <workItem from="1673231131761" duration="7568000" />
+      <workItem from="1673311862871" duration="98000" />
+      <workItem from="1673322838101" duration="400000" />
     </task>
     <servers />
   </component>

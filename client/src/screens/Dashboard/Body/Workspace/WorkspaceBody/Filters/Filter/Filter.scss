@@ -1,8 +1,18 @@
 .Filters__element {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
   .Filters__element-select {
     border-radius: 5px;
+    width: 100px;
+    padding: 5px 10px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0 , 0, .7);
+    cursor: pointer;
+    margin-left: 10px;
+
+    option {
+      cursor: pointer;
+    }
   }
 }
