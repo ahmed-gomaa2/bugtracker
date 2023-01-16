@@ -8,6 +8,7 @@
   width: 100%;
   gap: 0;
   padding: 20px 0;
+  overflow: hidden;
 
   .Jum__anim {
     min-height: 400px;
@@ -20,6 +21,17 @@
     justify-content: center;
     position: relative;
     gap: 20px;
+    animation: move-left forwards 1s, fade-in forwards 2s;
+    transition: all ease-in-out 1s;
+
+    @keyframes move-left {
+      from {
+        right: -100%;
+      }
+      to {
+        right: 0;
+      }
+    }
 
     .Jum__anim-circle {
       background: transparent;
@@ -86,6 +98,16 @@
     align-items: center;
     position: relative;
     gap: 20px;
+    animation: move-right-desc forwards 1s, fade-in forwards 2s;
+
+    @keyframes move-right-desc {
+      from {
+        left: -100%;
+      }
+      to {
+        left: 0;
+      }
+    }
 
 
     .Jum__desc-container {
@@ -132,7 +154,7 @@
         }
         75% {
           top: -10px;
-          box-shadow: 0 30px 20px rgba(0, 0, 0, 1);
+          box-shadow: 0 30px 20px rgba(0, 0, 0, .3);
         }
         100% {
           top: 0;
@@ -152,13 +174,14 @@
 
       &:before {
         content: '';
-        width: 10px;
+        width: 5px;
         height: calc(100% * 2);
         background: white;
         position: absolute;
         left: -30px;
         top: -20px;
         transform: rotate(135deg);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 1);
       }
 
       &:hover::before {
@@ -177,6 +200,14 @@
           left: -30px;
         }
       }
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 }
