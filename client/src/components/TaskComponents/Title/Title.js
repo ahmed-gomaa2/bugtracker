@@ -5,20 +5,11 @@ const Title = props => {
     const [editing, setEditing] = useState(false);
     return (
         <td className={'Title'}>
-            {
-                editing ? (
-                    <form action="submit">
-                        <input type="text"/>
-                        <button>Edit</button>
-                    </form>
-                ) : (
-                    <div>
-                        <p>
-                            {props.title}
-                        </p>
-                    </div>
-                )
-            }
+            <div>
+                <>
+                    {props.title}
+                </>
+            </div>
         </td>
     );
 };

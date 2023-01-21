@@ -218,6 +218,15 @@ export default (state = initialState, action) => {
                     filteredWorkspaceTasks: filteredTasksCopy
                 }
             })();
+
+        case actionTypes.DELETE_TASK_SUCCESS:
+            return (()=> {
+                return {
+                    ...state,
+                    currentWorkspaceTasks: [...state.currentWorkspaceTasks.filter(t => t.id !== action.task_id)],
+                    filteredWorkspaceTasks: [...state.filteredWorkspaceTasks.filter(t => t.id !== action.task_id)]
+                }
+            })();
         default:
             return state;
     }

@@ -10,11 +10,13 @@ import End from "../../../../../../../components/TaskComponents/End/End";
 import Priority from "../../../../../../../components/TaskComponents/Priority/Priority";
 import Assignees from "../../../../../../../components/TaskComponents/Assignees/Assignees";
 import Link from "../../../../../../../components/TaskComponents/Link/Link";
+import Delete from "../../../../../../../components/TaskComponents/Delete/Delete";
 
 const TaskRow = props => {
     return (
         <tr className={`TaskRow ${props.task.status == 4 && 'TaskRow__done'}`}>
-            <Title title={props.task.title} />
+            <Link task={props.task} />
+            {/*<Title title={props.task.title} />*/}
             {/*<Description description={props.task.description} />*/}
             <Type task={props.task} type={props.task.type} />
             <Status task={props.task} status={props.task.status} />
@@ -23,7 +25,7 @@ const TaskRow = props => {
             <End task={props.task} end_date={props.task.end_date} />
             <Priority task={props.task} priority={props.task.priority} />
             <Assignees task={props.task} engineers={props.task.engineers} />
-            <Link task={props.task} />
+            <Delete task={props.task}/>
         </tr>
     );
 };

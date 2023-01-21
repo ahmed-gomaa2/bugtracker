@@ -13,7 +13,7 @@ const tableHeads = [
     'End',
     'Priority',
     'Assignees',
-    'Link'
+    'delete'
 ]
 
 const TasksContainer = props => {

@@ -5,7 +5,7 @@ import './Link.scss';
 const Link = props => {
     return (
         <td className={'Link'}>
-            <NavLink to={`/dashboard/workspaces/${props.task.workspace_id}/task/${props.task.id}`}><i className="fa-solid fa-link"></i></NavLink>
+            <NavLink style={{color: `${props.task.status == 4 && 'lightblue'}`}} to={`/dashboard/workspaces/${props.task.workspace_id}/task/${props.task.id}`}>{props.task.title}</NavLink>
         </td>
     );
 };

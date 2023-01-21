@@ -12,7 +12,7 @@ import {
     CHANGE_TASK_TYPE_FAIL,
     CHANGE_TASK_TYPE_SUCCESS, CREATE_TASK_FAIL, CREATE_TASK_SUCCESS,
     CREATE_WORKSPACE_FAIL,
-    CREATE_WORKSPACE_SUCCESS,
+    CREATE_WORKSPACE_SUCCESS, DELETE_TASK_FAIL, DELETE_TASK_SUCCESS,
     DELETE_WORKSPACE_FAIL,
     DELETE_WORKSPACE_SUCCESS,
     EDIT_WORKSPACE_FAIL,
@@ -290,6 +290,21 @@ export const createTask = taskData => async dispatch => {
     }catch (e) {
         dispatch({
             type: CREATE_TASK_FAIL
+        })
+    }
+}
+
+export const deleteTask = (workspace_id, task_id) => async dispatch => {
+    try {
+        const res = await axios.delete(`/workspace/${workspace_id}/task/${task_id}`);
+        dispatch({
+            type: DELETE_TASK_SUCCESS,
+            task_id: +res.data.task_id,
+            workspace_id: +res.data.workspace_id
+        });
+    }catch (e) {
+        dispatch({
+            type: DELETE_TASK_FAIL
         })
     }
 }

@@ -3,17 +3,6 @@ import Dropdown from "../../../../../components/UI/Dropdown/Dropdown";
 import './WorkspaceToolbar.scss';
 
 const WorkspaceToolbar = props => {
-    // const ref = useRef();
-    // useEffect(() => {
-    //     const hover = document.querySelector('.WorkspaceToolbar__addTask-hover');
-    //     if(ref.current) {
-    //         document.querySelector('.WorkspaceToolbar__addTask').addEventListener('mouseenter', (e) => {
-    //             const xPos = e.clientX;
-    //             const yPos = e.clientY;
-    //             console.log(xPos, yPos);
-    //         });
-    //     }
-    // }, []);
     return (
         <div className={'WorkspaceToolbar'}>
             <div className="WorkspaceToolbar__header">

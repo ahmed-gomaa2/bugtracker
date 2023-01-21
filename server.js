@@ -26,6 +26,7 @@ const deleteEngineerRoute = require('./routes/workspace/remove.engineer.route');
 const editPriorityRoute = require('./routes/workspace/edit.priority.route');
 const getAllUsersRoute = require('./routes/auth/get.all.users.route');
 const getTaskRoute = require('./routes/workspace/get.task.route');
+const deleteTaskRoute = require('./routes/workspace/delete.task');
 
 const app = express();
 const server = http.createServer(app);
@@ -65,6 +66,7 @@ deleteEngineerRoute(app);
 editPriorityRoute(app);
 getAllUsersRoute(app);
 getTaskRoute(app);
+deleteTaskRoute(app);
 
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {
