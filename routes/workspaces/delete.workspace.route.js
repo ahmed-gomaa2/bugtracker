@@ -26,13 +26,21 @@ module.exports = app => {
         const user_id = req.user;
         const workspace_id = req.params.id;
 
-        const deleteWorkspaceQuery = 'DELETE FROM workspaces WHERE id = ? AND owner_id = ?';
-        connection.query(deleteWorkspaceQuery, [workspace_id, user_id], (deleteWorkspaceError, deleteWorkspaceRes) => {
-            if(deleteWorkspaceError) {
-                res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: deleteWorkspaceError}})
-            } else {
-                res.send(workspace_id)
+        const deleteAllWorkspaceTasks = 'DELETE FROM tasks WHERE workspace_id = ?';
+        connection.query(deleteAllWorkspaceTasks, workspace_id, (deleteTasksError, deleteTasksRes) => {
+            if(deleteTasksError) {
+                res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: deleteTasksError}})
+            }else {
+                const deleteWorkspaceQuery = 'DELETE FROM workspaces WHERE id = ? AND owner_id = ?';
+                connection.query(deleteWorkspaceQuery, [workspace_id, user_id], (deleteWorkspaceError, deleteWorkspaceRes) => {
+                    if(deleteWorkspaceError) {
+                        res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: deleteWorkspaceError}})
+                    } else {
+                        res.send(workspace_id)
+                    }
+                });
             }
-        });
+        })
+
     });
 }

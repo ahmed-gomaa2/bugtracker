@@ -3,10 +3,12 @@ import './Dropdown.scss';
 import {connect} from "react-redux";
 import {toggleWorkspaceEditForm} from "../../../store/action/ui.action";
 import {deleteWorkspace} from "../../../store/action/workspace.action";
+import {useNavigate} from "react-router-dom";
 
 const Dropdown = (props) => {
     const [dropdown, setDropdown] = useState(false);
     const dropdownRef = useRef();
+    const navigate = useNavigate();
     useEffect(() => {
         if(dropdownRef.current){
             const elRect = dropdownRef.current.getBoundingClientRect();
@@ -40,8 +42,8 @@ const Dropdown = (props) => {
                 <div onClick={e => {
                     e.preventDefault();
                     e.stopPropagation();
-                    props.deleteWorkspace(props.ws.id);
-                    setDropdown(!dropdown)
+                    props.deleteWorkspace(props.ws.id, navigate);
+                    setDropdown(!dropdown);
                 }} className="WorkspacesItem__dropdown--menu-el WorkspacesItem__dropdown--menu-delete">
                     <i className="fa-solid fa-trash"></i>
                     <p>Delete</p>
@@ -61,4 +63,4 @@ const Dropdown = (props) => {
     );
 };
 
-export default connect(null, {toggleWorkspaceEditForm}) (Dropdown);
+export default connect(null, {toggleWorkspaceEditForm, deleteWorkspace}) (Dropdown);

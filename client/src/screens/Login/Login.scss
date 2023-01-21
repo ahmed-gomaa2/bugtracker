@@ -63,10 +63,10 @@
           &:hover p {
             color: black;
           }
-          &:hover:before {
+          &:hover::before {
             transform: scaleY(0);
           }
-          &:hover:after {
+          &:hover::after {
             transform: scaleY(0);
           }
         }

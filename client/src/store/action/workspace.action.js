@@ -10,7 +10,7 @@ import {
     CHANGE_TASK_STATUS_FAIL,
     CHANGE_TASK_STATUS_SUCCESS,
     CHANGE_TASK_TYPE_FAIL,
-    CHANGE_TASK_TYPE_SUCCESS,
+    CHANGE_TASK_TYPE_SUCCESS, CREATE_TASK_FAIL, CREATE_TASK_SUCCESS,
     CREATE_WORKSPACE_FAIL,
     CREATE_WORKSPACE_SUCCESS,
     DELETE_WORKSPACE_FAIL,
@@ -42,7 +42,7 @@ export const fetchWorkspaces = () => async dispatch => {
     }
 }
 
-export const deleteWorkspace = id => async dispatch => {
+export const deleteWorkspace = (id, navigate) => async dispatch => {
     try {
         const deleted_id = await axios.delete('/workspace/delete/' + id);
 
@@ -50,6 +50,7 @@ export const deleteWorkspace = id => async dispatch => {
             type: DELETE_WORKSPACE_SUCCESS,
             id: deleted_id.data
         });
+        navigate('/dashboard')
     }catch (e) {
         dispatch({
             type: DELETE_WORKSPACE_FAIL,
@@ -267,5 +268,28 @@ export const getTask = (workspace_id, id) => async dispatch => {
 
     }catch (e) {
 
+    }
+}
+
+export const createTask = taskData => async dispatch => {
+    try {
+        const data = {
+            ...taskData,
+            solution: '',
+            status: 1,
+            start_date: new Date()
+        };
+
+        const res = await axios.post('/workspace/create-task', data);
+        console.log(res.data);
+        dispatch({
+            type: CREATE_TASK_SUCCESS,
+            newTask: res.data
+        })
+
+    }catch (e) {
+        dispatch({
+            type: CREATE_TASK_FAIL
+        })
     }
 }

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Workspace.scss';
 import WorkspaceToolbar from "./WorkspaceToolbar/WorkspaceToolbar";
 import {useParams} from "react-router-dom";
@@ -10,6 +10,8 @@ import Spinner from "../../../../components/UI/Spinner/Spinner";
 import CreateTask from "../../../../components/CreateTask/CreateTask";
 
 const Workspace = props => {
+    const [adding, setAdding] = useState(false);
+
     const {workspace_id} = useParams();
 
     useEffect(() => {
@@ -19,6 +21,14 @@ const Workspace = props => {
         }
     }, [workspace_id]);
 
+    const closeAddingForm = e => {
+        setAdding(false);
+    }
+
+    const openAddingForm = e => {
+        setAdding(true);
+    }
+
     return (
         <div className={'Workspace'}>
             {props.fetchingWorkspace ? (
@@ -26,12 +36,16 @@ const Workspace = props => {
             ) : (
                 <>
                     <Toolbar>
-                        <WorkspaceToolbar ws={props.workspaceInfo}/>
+                        <WorkspaceToolbar openAdding={openAddingForm} ws={props.workspaceInfo}/>
                     </Toolbar>
                     <WorkspaceBody />
+                    {
+                        adding && (
+                            <CreateTask currentUser={props.currentUser} users={props.users} closeAdding={closeAddingForm} workspace={props.workspaceInfo} />
+                        )
+                    }
                 </>
             )}
-            <CreateTask />
         </div>
     );
 };
@@ -41,7 +55,9 @@ const mapStateToProps = state => {
         workspaceInfo: state.workspaces.currentWorkspaceData,
         tasks: state.workspaces.filteredWorkspaceTasks,
         filters: state.workspaces.filters,
-        fetchingWorkspace: state.workspaces.fetchingWorkspace
+        fetchingWorkspace: state.workspaces.fetchingWorkspace,
+        users: state.auth.users,
+        currentUser: state.auth.user
     }
 }
 

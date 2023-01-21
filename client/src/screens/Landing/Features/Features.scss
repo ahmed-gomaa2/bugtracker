@@ -1,0 +1,37 @@
+.Features {
+  width: 100%;
+  height: 400px;
+  background: red;
+  padding: 30px 0;
+
+  .Features__container {
+    width: 80%;
+    background: white;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    transform: translateX(-100%);
+
+
+    .Features__item {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+
+      &:first-child {
+        background: yellow;
+
+      }
+
+      &:nth-child(2) {
+        background: black;
+      }
+
+      &:nth-child(3) {
+        background: green;
+      }
+    }
+  }
+}

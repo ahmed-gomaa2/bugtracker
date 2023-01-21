@@ -33,19 +33,25 @@ module.exports = app => {
             connection.query(createTaskQuery, [data.title, data.description, data.type, data.status, data.solution, new Date(data.end_date), data.priority, data.workspace_id], (insertTaskError, insertTaskRes) => {
                 if(insertTaskError) return res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: insertTaskError}});
                 const engineers = [];
-                for(let i = 0; i < data.engineers; i++) {
+                for(let i = 0; i < data.engineers.length; i++) {
                     const insertEngineersQuery = 'INSERT INTO task_user (task_id, user_id) VALUES (?, ?)';
-                    connection.query(insertEngineersQuery, [insertTaskRes.insertId, data.engineers[i]], (insertEngineerError, insertEngineerRes) => {
+                    connection.query(insertEngineersQuery, [insertTaskRes.insertId, data.engineers[i].id], (insertEngineerError, insertEngineerRes) => {
                          if(insertTaskError) {
                              res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: insertEngineerError}})
                          }else {
-                             engineers.push(data.engineers[i]);
+                             const currentEngineer = {
+                                 id: insertEngineerRes.insertId,
+                                 user_id: data.engineers[i].id,
+                                 task_id: insertTaskRes.insertId
+                             }
+                             engineers.push(currentEngineer);
                              if(i === data.engineers.length - 1) {
                                  const task = {
                                      id: insertTaskRes.insertId,
                                      ...data,
-                                     engineers
-                                 }
+                                     engineers: engineers
+                                 };
+                                 console.log('is this the problem')
                                  res.status(200).send(task);
                              }
                          }

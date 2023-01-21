@@ -203,6 +203,21 @@ export default (state = initialState, action) => {
                     filteredWorkspaceTasks: filteredTasksCopy
                 }
             })();
+        case actionTypes.CREATE_TASK_SUCCESS:
+            return (() => {
+                const filteredTasksCopy = [...state.filteredWorkspaceTasks];
+                const filtersCopy = {...state.filters};
+
+                if((action.newTask.type == filtersCopy.type || filtersCopy.type == 0) && (action.newTask.status == filtersCopy.status || filtersCopy.status == 0) && (action.newTask.priority == filtersCopy.priority || filtersCopy.priority == 0)) {
+                    filteredTasksCopy.push(action.newTask);
+                }
+
+                return {
+                    ...state,
+                    currentWorkspaceTasks: [...state.currentWorkspaceTasks, action.newTask],
+                    filteredWorkspaceTasks: filteredTasksCopy
+                }
+            })();
         default:
             return state;
     }

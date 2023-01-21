@@ -8,6 +8,7 @@ const WorkspaceBody = props => {
         <div className={'WorkspaceBody'}>
             <Filters />
             <TasksContainer />
+
         </div>
     );
 };
