@@ -4,7 +4,8 @@ const initialState = {
     toggleSidebar: false,
     toggleWorkspaceCreate: false,
     toggleWorkspaceEdit: false,
-    editedWorkspaceId: null
+    editedWorkspaceId: null,
+    toggleTaskOpen: false,
 
 }
 
@@ -25,6 +26,11 @@ export default (state = initialState, action) => {
                 ...state,
                 toggleWorkspaceEdit: !state.toggleWorkspaceEdit,
                 editedWorkspaceId: action.id
+            }
+        case actionTypes.TOGGLE_TASK_OPEN:
+            return {
+                ...state,
+                toggleTaskOpen:!state.toggleTaskOpen
             }
         default:
             return state;

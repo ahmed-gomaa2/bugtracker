@@ -68,8 +68,7 @@ module.exports = app => {
                  res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: insertEngineerError}})
              }else {
                  const userData = {
-                     id: insertEngineerRes.insertId,
-                     user_id: data.user_id,
+                     ...data,
                      task_id: data.task_id
                  }
                  res.status(200).send(userData);

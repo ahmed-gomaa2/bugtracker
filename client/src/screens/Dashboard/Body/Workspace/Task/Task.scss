@@ -1,0 +1,118 @@
+
+.Task {
+  position: fixed;
+  right: 0;
+  top: 0;
+  //max-width: 400px;
+  height: 100vh;
+  animation: fade-in 0.8s forwards, from-right 0.7s forwards ;
+  z-index: 200;
+
+  .Task__close {
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: block;
+    cursor: pointer;
+    background: red;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    transition: 0.3s;
+
+    i {
+      color: white;
+      transition: 0.3s;
+    }
+
+    &:hover {
+      background: darkred;
+    }
+  }
+
+  .Task__container {
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: relative;
+    overflow-y: auto;
+
+    .Task__content {
+      .form {
+        textarea {
+          outline: none;
+          min-height: 50px;
+        }
+      }
+
+      .Assignees {
+        flex-wrap: wrap;
+      }
+    }
+
+    .Task__content-name input {
+      outline: none;
+    }
+
+    .Task__nav {
+      background: #67AD94;
+
+      .Task__dropdown-item {
+        cursor: pointer;
+      }
+
+      .Task__dropdown-item i {
+        color: #ff9191;
+        margin-right: 15px;
+      }
+
+      .dropdown-item {
+        transition: 0.3s;
+      }
+
+      .Task__dropdown-item:hover .dropdown-item{
+        color: black !important;
+        background: white;
+      }
+    }
+
+    .Task__nav-dots {
+      cursor: pointer;
+    }
+
+  }
+
+  .Task__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes from-right {
+    from {
+      right: -100%;
+    }
+    to {
+      right: 0;
+    }
+  }
+}

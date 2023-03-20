@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from "./components/HOC/Navbar/Navbar";
-import {Route, Router, Routes} from "react-router-dom";
+import {Route, Router, Routes, useNavigate} from "react-router-dom";
 import Register from "./screens/Register/Register";
 import {connect} from "react-redux";
 import Login from "./screens/Login/Login";
@@ -16,15 +16,18 @@ import Landing from "./screens/Landing/Landing";
 import Workspaces from "./screens/Dashboard/Body/WorkspacesContainer/WorkspacesContainer";
 import SendCode from "./screens/SendCode/SendCode";
 import VerifyCode from "./screens/VerifyCode/VerifyCode";
-import Task from "./screens/Task/Task";
+import Task from "./screens/Dashboard/Body/Workspace/Task/Task";
+import Alert from "./components/UI/Alert/Alert";
 
 function App(props) {
+    const navigate = useNavigate();
     useEffect(() => {
-        props.loadUser();
+        props.loadUser(navigate);
     }, []);
 
   return (
     <div className="App">
+        <Alert />
         {
             !props.loadingUser ? (
                 <>
@@ -73,7 +76,6 @@ function App(props) {
                             <Route exact path={'/dashboard/home'} element={<Home />} />
                             <Route exact path={'/dashboard/workspaces'} element={<Workspaces />} />
                             <Route exact path={'/dashboard/workspaces/:workspace_id'} element={<Workspace />} />
-                            <Route exact path={'/dashboard/workspaces/:workspace_id/task/:task_id'} element={<Task />} />
                             <Route exact path={'/dashboard/settings'} element={<Settings />} />
                         </Route>
                     </Routes>

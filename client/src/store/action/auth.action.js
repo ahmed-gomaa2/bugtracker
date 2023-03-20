@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {
+    CREATE_SOCKET_SUCCESS,
     FETCH_ALL_USERS_FAIL, FETCH_ALL_USERS_SUCCESS,
     LOAD_USER_END,
     LOAD_USER_FAIL,
@@ -16,7 +17,9 @@ import {
     STORE_RESET_EMAIL
 } from "./action.types";
 import setHeadersHelper from "../../utls/set.headers.helper";
-import {fetchWorkspaces} from "./workspace.action";
+import {addEngineerHandler, fetchWorkspaces, getTasksAssignedToMe, removeEngineerHandler} from "./workspace.action";
+import io from 'socket.io-client';
+import {setAlert} from "./notifications.action";
 
 const loadUserStart = () => {
     return {
@@ -30,7 +33,7 @@ const loadUserEnd = () => {
     }
 }
 
-export const loadUser = () => async dispatch => {
+export const loadUser = (navigate) => async dispatch => {
     try{
         dispatch(loadUserStart());
         const token = localStorage.getItem('token');
@@ -46,8 +49,35 @@ export const loadUser = () => async dispatch => {
 
         await dispatch(fetchWorkspaces());
 
+        await dispatch(getTasksAssignedToMe());
+
+        if(user.status === 200) {
+            const socket = io.connect('http://localhost:8080/');
+            await dispatch({
+                type: CREATE_SOCKET_SUCCESS,
+                socket: socket
+            });
+
+            socket.emit('join_room', user.data.id);
+
+            socket.on('engineer_removed', data => {
+                dispatch(setAlert(`${user.data.id == data.user_id ? 'You have ' : `${data.task.engineers.filter(e => e.id == data.user_id)[0].username} has `}been removed from the ${data.task.title} task.`, 'danger'));
+                dispatch(removeEngineerHandler(data.task, data.user_id, user.data.id))
+            });
+
+            socket.on('engineer_added', data => {
+                console.log(data);
+                dispatch(addEngineerHandler(data.task, data.user_id, user.data.id));
+                dispatch(setAlert(`${data.user_id == user.data.id ? 'You have ' : `${data.task.engineers.filter(e => e.id == data.user_id)[0].username} has`} been added to ${data.task.title} task.`, 'success'))
+            });
+        }
+
         dispatch(loadUserEnd());
     }catch (e) {
+        if(e.response.data.error.type === 'jwt') {
+            dispatch(setAlert('Please, Login again!', 'primary'))
+            navigate('/login');
+        }
         dispatch({
             type: LOAD_USER_FAIL,
             payload: e.response.data.error
@@ -96,7 +126,13 @@ export const login = userData => async dispatch => {
             token: res.data.token
         });
 
+        console.log(res);
+
         await dispatch(loadUser());
+
+        if(res.status == 200) {
+            dispatch(setAlert('Welcome back!', 'success'));
+        }
     }catch (e) {
         dispatch({
             type: LOGIN_USER_FAIL,

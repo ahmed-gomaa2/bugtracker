@@ -41,7 +41,7 @@ const End = props => {
                         <div onClick={e => setEditing(false)} className="End__backdrop"></div>
                     </div>
                 ): (
-                    <p onClick={e => setEditing(true)} className={'End__date'}><span>{dateFormat(props.end_date)}</span><i className="fa-solid fa-calendar-days"></i></p>
+                    <p onClick={e => props.task.owner && setEditing(true)} className={'End__date'}><span>{dateFormat(props.end_date)}</span><i className="fa-solid fa-calendar-days"></i></p>
                 )
             }
         </td>

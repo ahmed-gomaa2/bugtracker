@@ -7,7 +7,8 @@ const initialState = {
     token: localStorage.getItem('token'),
     loading: true,
     error: null,
-    resetEmail: null
+    resetEmail: null,
+    socket: null
 }
 
 export default (state = initialState, action) => {
@@ -20,6 +21,11 @@ export default (state = initialState, action) => {
                 loading: false,
                 authenticated: true,
                 error: null
+            }
+        case actionTypes.CREATE_SOCKET_SUCCESS:
+            return {
+                ...state,
+                socket: action.socket
             }
         case actionTypes.FETCH_ALL_USERS_SUCCESS:
             return {
@@ -34,6 +40,12 @@ export default (state = initialState, action) => {
                     type: action.payload.type,
                     msg: action.payload.msg
                 }
+            }
+        case actionTypes.LOAD_USER_FAIL:
+            return {
+                ...state,
+                authenticated: false,
+                user: null,
             }
         case actionTypes.LOAD_USER_SUCCESS:
             return {

@@ -13,7 +13,7 @@ const WorkspacesListItem = (props) => {
     return (
         <NavLink to={`/dashboard/workspaces/${props.ws.id}`} className={'WorkspacesItem'}>
             <div className="WorkspacesItem__header">
-                <h5>{props.ws.name}</h5>
+                <p>{props.ws.name}</p>
             </div>
             {
                 props.error && props.error.type === 'client' && (<p>{props.error.msg}</p>)

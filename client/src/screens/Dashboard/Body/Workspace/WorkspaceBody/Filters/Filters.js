@@ -27,11 +27,11 @@ const filters = {
 
 const Filters = props => {
     return (
-        <div className={'Filters'}>
+        <div className={'Filters mx-0'}>
             <div className="Filters__container">
                 {
                     Object.keys(filters).map((k, i) => (
-                        <Filter key={i} filter={k} index={i} filters={filters} />
+                        <Filter type={props.type} key={i} filter={k} index={i} filters={filters} />
                     ))
                 }
             </div>

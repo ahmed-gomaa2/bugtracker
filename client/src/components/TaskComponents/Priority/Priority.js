@@ -54,9 +54,8 @@ const Priority = props => {
                         <div onClick={e => setEditing(false)} className="Priority__backdrop"></div>
                     </div>
                 ) : (
-                    <p id={'priority'}  onClick={e => {
-                        setEditing(true);
-                    }} className={`priority priority-${props.priority}`}>{priorities[props.priority]}</p>
+                    <p id={'priority'}  onClick={e => props.task.owner && setEditing(true)
+                    } className={`priority priority-${props.priority}`}>{priorities[props.priority]}</p>
                 )
             }
         </td>

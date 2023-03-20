@@ -12,7 +12,16 @@ const userOwnTask = (req, res, next) => {
             } else if(findOwnerRes.length === 0) {
                 res.status(400).json({error: {type: 'client', msg: 'YOU ARE NOT ALLOWED TO '}})
             }else {
-                next();
+                const userOwnTaskQuery = 'SELECT * FROM tasks WHERE id = ? AND workspace_id = ? '
+                connection.query(userOwnTaskQuery, [data.id, data.workspace_id], (userOwnTaskError, userOwnTaskRes) => {
+                    if(userOwnTaskError) {
+                        res.status(500).json({error: {type: 'server', msg: 'OMETHING WENT WRONG WITH THE SERVER!', err: userOwnTaskError}})
+                    }else if(userOwnTaskRes.length === 0) {
+                        res.status(400).json({error: {type: 'client', msg: 'YOU DON\'T HAVE ACCESS TO THIS TASK'}})
+                    }else {
+                        next();
+                    }
+                })
             }
         });
     }catch (e) {

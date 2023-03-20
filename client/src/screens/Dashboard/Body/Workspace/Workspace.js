@@ -8,6 +8,7 @@ import Toolbar from "../../../../components/HOC/Toolbar/Toolbar";
 import WorkspaceBody from "./WorkspaceBody/WorkspaceBody";
 import Spinner from "../../../../components/UI/Spinner/Spinner";
 import CreateTask from "../../../../components/CreateTask/CreateTask";
+import Task from "./Task/Task";
 
 const Workspace = props => {
     const [adding, setAdding] = useState(false);

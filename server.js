@@ -27,6 +27,10 @@ const editPriorityRoute = require('./routes/workspace/edit.priority.route');
 const getAllUsersRoute = require('./routes/auth/get.all.users.route');
 const getTaskRoute = require('./routes/workspace/get.task.route');
 const deleteTaskRoute = require('./routes/workspace/delete.task');
+const getTasksRoute = require('./routes/workspaces/get.tasks.assigned.to.me');
+
+const {Server, Socket} = require('socket.io');
+const socketConnection = require('./socket/index');
 
 const app = express();
 const server = http.createServer(app);
@@ -37,6 +41,19 @@ app.use(cors({
     origin: '*',
     methods: ['GET', 'POST', 'UPDATE', 'PUT']
 }));
+
+// socket.io setup
+
+const io = new Server(server, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"],
+        allowedHeaders: ["my-custom-header"],
+        credentials: true
+    }
+});
+
+socketConnection(app, io);
 
 app.get('/', (req, res) => {
     res.send('Hello from the application!');
@@ -67,6 +84,7 @@ editPriorityRoute(app);
 getAllUsersRoute(app);
 getTaskRoute(app);
 deleteTaskRoute(app);
+getTasksRoute(app);
 
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {

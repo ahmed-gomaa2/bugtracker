@@ -11,6 +11,24 @@
     //padding: 5px;
     border: 1px solid gray;
     margin-right: 5px;
+    position: relative;
+
+    span {
+      //position:absolute;
+      //top: -30px;
+      //left: 50%;
+      //transform: translateX(-50%);
+      //display: none;
+      //min-width: 200px;
+      //clear: both;
+      //float: left;
+      //text-align: center;
+      //background: white;
+    }
+
+    &:hover span {
+      display: block;
+    }
   }
 
   .Assignees__add {

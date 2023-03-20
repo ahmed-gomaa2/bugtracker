@@ -1,0 +1,36 @@
+.Alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: inline-block;
+  z-index: 1000;
+
+  .Alert__item {
+    padding: 10px;
+    margin: 10px 0;
+    opacity: 0.9;
+    background: #f4f4f4;
+    color: #333;
+  }
+
+  .Alert__item-white {
+    background: #fff;
+    color: #333;
+    border: #ccc solid 1px;
+  }
+
+  .Alert__item-danger {
+    background: red;
+    color: #fff;
+  }
+
+  .Alert__item-success {
+    background: green;
+    color: #fff;
+  }
+
+  .Alert__item-primary {
+    background: blue;
+    color: #fff;
+  }
+}

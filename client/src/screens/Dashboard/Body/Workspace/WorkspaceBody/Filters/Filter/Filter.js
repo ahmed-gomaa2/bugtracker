@@ -1,5 +1,5 @@
 import React from 'react';
-import {filterTasks} from "../../../../../../../store/action/workspace.action";
+import {filterWorkspaceTasks, filterAssignedTasks} from "../../../../../../../store/action/workspace.action";
 import {connect} from "react-redux";
 import './Filter.scss';
 
@@ -12,15 +12,19 @@ const Filter = props => {
     }
     const filterChangeHandler = e => {
         e.preventDefault();
-        props.filterTasks(props.filter, +getKeyValue(e));
+        if(props.type === 0) {
+            props.filterWorkspaceTasks(props.filter, +getKeyValue(e));
+        }else {
+            props.filterAssignedTasks(props.filter, +getKeyValue(e));
+        }
     }
     return (
         <div className="Filters__element">
-            <label htmlFor="type" className="Filters__element-label">{props.filter.toUpperCase()}: </label>
-            <select onChange={filterChangeHandler} name="type" id="type" className="Filters__element-select">
+            <label htmlFor="type" className="Filters__element-label small">{props.filter.toUpperCase()}: </label>
+            <select onChange={filterChangeHandler} name="type" id="type" className="Filters__element-select small">
                 {
                     Object.keys(props.filters[props.filter]).map((v, i) => (
-                        <option key={i}>{props.filters[props.filter][v]}</option>
+                        <option className={'small'} key={i}>{props.filters[props.filter][v]}</option>
                     ))
                 }
             </select>
@@ -28,4 +32,4 @@ const Filter = props => {
     );
 };
 
-export default connect(null, {filterTasks}) (Filter);
+export default connect(null, {filterWorkspaceTasks, filterAssignedTasks}) (Filter);

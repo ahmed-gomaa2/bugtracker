@@ -3,6 +3,7 @@ import './Home.scss';
 import HomeToolbar from "./HomeToolbar/HomeToolbar";
 import WorkspacesList from "../WorkspacesList/WorkspacesList";
 import Toolbar from "../../../../components/HOC/Toolbar/Toolbar";
+import TasksList from "../TasksList/TasksList";
 
 const Home = props => {
     return (
@@ -12,6 +13,7 @@ const Home = props => {
             </Toolbar>
             <div className="Home__body">
                 <WorkspacesList />
+                <TasksList />
             </div>
         </div>
     );

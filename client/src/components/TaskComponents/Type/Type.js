@@ -3,6 +3,7 @@ import './Type.scss';
 import {connect} from "react-redux";
 import {changeType} from "../../../store/action/workspace.action";
 import Pen from '../../UI/Pen/Pen'
+import {useNavigate} from "react-router-dom";
 
 const types= {
     1: {
@@ -23,6 +24,7 @@ const types= {
 const Type = props => {
     const [editing, setEditing] = useState(false);
     const [hovered, setHovered] = useState(false);
+    const navigate = useNavigate();
 
     const selectFocusHandler = e => {
         e.target.style.childNodes[1].clientHeight = '100px';
@@ -30,7 +32,7 @@ const Type = props => {
 
     const typeClickHandler = t => {
         if(props.type != t) {
-            props.changeType(props.task.id, +t, props.task.workspace_id);
+            props.changeType(props.task.id, +t, props.task.workspace_id, navigate);
         }
         setEditing(false);
     }
@@ -59,7 +61,7 @@ const Type = props => {
             {
                 editing ? (
                     <div className="Type__select">
-                        <p onClick={e => setEditing(true)} className={`type type-${props.type}`}>{types[props.type].icon}<span>{types[props.type].name}</span></p>
+                        <p onClick={e => props.task.owner && setEditing(true)} className={`type type-${props.type}`}>{types[props.type].icon}<span>{types[props.type].name}</span></p>
                         <div ref={dropdownRef} className="Type__options">
                             {
                                 Object.keys(types).map((t, i) => (
@@ -69,9 +71,11 @@ const Type = props => {
                         </div>
                     </div>
                 ) : (
-                    <p onMouseLeave={e => setHovered(false)} onMouseEnter={e => setHovered(true)} onClick={e => {
-                        setEditing(true);
-                        setHovered(false);
+                    <p onMouseLeave={e => setHovered(false)} onMouseEnter={e => props.task.owner && setHovered(true)} onClick={e => {
+                        if(props.task.owner) {
+                            setEditing(true);
+                            setHovered(false);
+                        }
                     }} className={`type type-${props.type}`}>{types[props.type].icon}<span>{types[props.type].name}</span>{hovered && <Pen />}</p>
                 )
             }

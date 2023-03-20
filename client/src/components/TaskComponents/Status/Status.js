@@ -42,7 +42,7 @@ const Status = props => {
             return s != 4 ? (
                 <p key={i} onClick={e => statusClickHandler(s)} className={`option status status-${s}`}>{status[s].icon}<span>{status[s].name}</span></p>
             ) : (
-                props.user.id == props.workspaceData.owner_id && <p key={i} onClick={e => statusClickHandler(s)} className={`option status status-${s}`}>{status[s].icon}<span>{status[s].name}</span></p>
+                props.task.owner && <p key={i} onClick={e => statusClickHandler(s)} className={`option status status-${s}`}>{status[s].icon}<span>{status[s].name}</span></p>
             )
         })
     }

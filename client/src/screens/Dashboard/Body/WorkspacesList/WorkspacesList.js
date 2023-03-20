@@ -6,7 +6,7 @@ import {toggleWorkspaceCreateForm} from "../../../../store/action/ui.action";
 
 const WorkspacesList = props => {
     return (
-        <div className="Home__workspaces">
+        <div className="Home__workspaces my-3 ">
             <div className="Home__workspaces--header">
                 <h2>Workspaces</h2>
                 <p onClick={e => {

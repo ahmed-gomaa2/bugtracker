@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './TaskRow.scss';
 import Title from "../../../../../../../components/TaskComponents/Title/Title";
 import Description from "../../../../../../../components/TaskComponents/Description/Description";
@@ -13,6 +13,12 @@ import Link from "../../../../../../../components/TaskComponents/Link/Link";
 import Delete from "../../../../../../../components/TaskComponents/Delete/Delete";
 
 const TaskRow = props => {
+
+    useEffect(() => {
+        if(props.task.owner) {
+            props.setOwner(true);
+        }
+    }, [props.task]);
     return (
         <tr className={`TaskRow ${props.task.status == 4 && 'TaskRow__done'}`}>
             <Link task={props.task} />
@@ -25,7 +31,10 @@ const TaskRow = props => {
             <End task={props.task} end_date={props.task.end_date} />
             <Priority task={props.task} priority={props.task.priority} />
             <Assignees task={props.task} engineers={props.task.engineers} />
-            <Delete task={props.task}/>
+            {
+                props.task.owner && <Delete task={props.task}/>
+            }
+
         </tr>
     );
 };

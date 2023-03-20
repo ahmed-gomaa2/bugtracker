@@ -14,7 +14,12 @@ module.exports = app => {
                     res.status(400).json({error: {type: 'client', msg: 'THIS USER DOESN\'T EXIST ANY MORE!'}})
                 }else {
                     //send the user data to the client.
-                    res.send(findUserRes[0]);
+                    const user = {
+                        id: user_id,
+                        username: findUserRes[0].username,
+                        email: findUserRes[0].email
+                    }
+                    res.send(user);
                 }
             });
         }catch (e) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './TasksContainer.scss';
 import {connect} from "react-redux";
 import TaskRow from "./TaskRow/TaskRow";
@@ -17,22 +17,28 @@ const tableHeads = [
 ]
 
 const TasksContainer = props => {
+    const [owner, setOwner] = useState(false);
     return (
-        <div className={'TasksContainer'}>
+        <div className={'TasksContainer col-xl-6 col-lg-6 col-md-8'}>
             <table className="TasksContainer__table">
                 {/*<thead className="TasksContainer__table--header">*/}
                     <tr className="TasksContainer__table--header">
                         {
-                            tableHeads.map((k, i) => (
-                                <th key={i} className="TasksContainer__table--header-head">{k}</th>
-                            ))
+                            tableHeads.map((k, i) => {
+                                if(k === 'delete' && !owner) {
+                                    return;
+                                } else {
+                                    return <th key={i} className="TasksContainer__table--header-head">{k}</th>
+                                }
+                            }
+                            )
                         }
                     </tr>
                 {/*</thead>*/}
                 {/*<tbody>*/}
                     {
                         props.tasks.length > 0 && props.tasks.map((t, i) => (
-                            <TaskRow task={t} key={i} />
+                            <TaskRow setOwner={setOwner} task={t} key={i} />
                         ))
                     }
                 {/*</tbody>*/}
@@ -63,10 +69,10 @@ const TasksContainer = props => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        tasks: state.workspaces.filteredWorkspaceTasks
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//         tasks: state.workspaces.filteredWorkspaceTasks
+//     }
+// }
 
-export default connect(mapStateToProps) (TasksContainer);
+export default TasksContainer;

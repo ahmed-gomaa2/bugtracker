@@ -46,7 +46,6 @@ const AssigneesModify = props => {
             } else {
                 dropdownRef.current.style.transform = 'none';
             }
-
         }
     }, [props.modify]);
 
@@ -60,12 +59,12 @@ const AssigneesModify = props => {
     }, [props.modify]);
 
     const engDeleteHandler = eng => {
-        props.removeEngineer(eng.id, props.task.id, props.task.workspace_id);
+        props.removeEngineer(eng.id, props.task.id, props.task.workspace_id, props.socket, props.task.engineers, props.task, eng);
         props.setModify(false);
     }
 
     const addEngineerHandler = eng => {
-        props.addEngineerToTask(eng.id, props.task.id, props.task.workspace_id)
+        props.addEngineerToTask(eng.id, props.task.id, props.task.workspace_id, props.socket, props.task, eng)
         props.setModify(false);
     }
 
@@ -76,21 +75,23 @@ const AssigneesModify = props => {
             </form>
             <div className="AssigneesModify__engineers">
                 {
-                    users.length > 0 && users.map((user, i) => (
-                        props.engineers.filter(eng => eng.id === user.id).length > 0 ? (
-                            <p key={i} onClick={e => engDeleteHandler(user)} className={'AssigneesModify__user'} style={{border: `1px solid red`}}>
-                                <span>{nameFormat(user.username)}</span>
-                                <span className={'AssigneesModify__remove'}>x</span>
-                            </p>
-                        ) : (
-                            <p key={i} onClick={e => {
-                                addEngineerHandler(user);
-                            }} className={'AssigneesModify__user'} style={{border: `1px solid blue`}}>
-                                {nameFormat(user.username)}
-                                <span className={'AssigneesModify__add'}>+</span>
-                            </p>
-                        )
-                    ))
+                    users.length > 0 && users.map((user, i) => {
+                        return (
+                                props.engineers.filter(eng => eng.id === user.id).length > 0 ? (
+                                    <p key={i} onClick={e => engDeleteHandler(user)} className={'AssigneesModify__user'} style={{border: `1px solid red`}}>
+                                        <span>{nameFormat(user.username)}</span>
+                                        <span className={'AssigneesModify__remove'}>x</span>
+                                    </p>
+                                ) : (
+                                    <p key={i} onClick={e => {
+                                        addEngineerHandler(user);
+                                    }} className={'AssigneesModify__user'} style={{border: `1px solid blue`}}>
+                                        {nameFormat(user.username)}
+                                        <span className={'AssigneesModify__add'}>+</span>
+                                    </p>
+                                )
+                            )
+                    })
                 }
             </div>
         </div>
@@ -100,7 +101,8 @@ const AssigneesModify = props => {
 const mapStateToProps = state => {
     return {
         users: state.auth.users,
-        currentUser: state.auth.user
+        currentUser: state.auth.user,
+        socket: state.auth.socket
     }
 }
 
