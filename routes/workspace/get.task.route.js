@@ -42,7 +42,6 @@ const userOwnThisTask = (req, res, next) => {
 
 module.exports = app => {
     app.get('/workspace/:workspace_id/task/:task_id', auth, userOwnThisTask, (req, res) => {
-        console.log(req.params)
         try{
             const {task_id, workspace_id} = req.params;
             const user = req.user;

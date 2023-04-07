@@ -48,6 +48,7 @@ module.exports = app => {
                 }
             });
         }catch (e) {
+            console.log(e);
             res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER WHILE LOGGING IN THE USER!', err: e}})
         }
     });

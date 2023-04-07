@@ -30,7 +30,6 @@ module.exports = app => {
             if(findWorkspaceError) {
                 res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: findWorkspaceError}})
             } else {
-                console.log(findWorkspaceRes)
                 const fetchWorkspaceTasksQuery = 'SELECT * FROM tasks WHERE workspace_id = ?';
                 connection.query(fetchWorkspaceTasksQuery, findWorkspaceRes[0].id, (fetchWorkspaceTasksError, fetchWorkspaceTasksRes) => {
                     if(findWorkspaceError) {
@@ -43,7 +42,6 @@ module.exports = app => {
                         }
                         res.status(200).send(workspaceData);
                     }else {
-                        console.log(fetchWorkspaceTasksRes)
                         const tasks = [];
                         for (let i = 0; i < fetchWorkspaceTasksRes.length; i++) {
                             const fetchTasksEngineersQuery = 'SELECT user.username, user.id, user.email, task_user.task_id FROM user INNER JOIN task_user ON task_user.user_id = user.id WHERE task_id = ?';

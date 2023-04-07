@@ -17,7 +17,13 @@ import {
     STORE_RESET_EMAIL
 } from "./action.types";
 import setHeadersHelper from "../../utls/set.headers.helper";
-import {addEngineerHandler, fetchWorkspaces, getTasksAssignedToMe, removeEngineerHandler} from "./workspace.action";
+import {
+    addEngineerHandler,
+    addTaskToAssignedTasks,
+    fetchWorkspaces,
+    getTasksAssignedToMe,
+    removeEngineerHandler
+} from "./workspace.action";
 import io from 'socket.io-client';
 import {setAlert} from "./notifications.action";
 
@@ -69,6 +75,11 @@ export const loadUser = (navigate) => async dispatch => {
                 console.log(data);
                 dispatch(addEngineerHandler(data.task, data.user_id, user.data.id));
                 dispatch(setAlert(`${data.user_id == user.data.id ? 'You have ' : `${data.task.engineers.filter(e => e.id == data.user_id)[0].username} has`} been added to ${data.task.title} task.`, 'success'))
+            });
+            socket.on('create_task', data => {
+                console.log(data);
+                dispatch(addTaskToAssignedTasks(data.task));
+                dispatch(setAlert(`${data.task.title} has been created 🎉`, 'success'));
             });
         }
 

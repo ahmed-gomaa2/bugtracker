@@ -152,7 +152,7 @@ const CreateTask = props => {
 
         if(isValid && engineers.length) {
             setSending(true);
-            await props.createTask(data);
+            await props.createTask(data, props.socket);
             setForm({
                 title: {
                     value: '',
@@ -283,6 +283,12 @@ const CreateTask = props => {
             }} className="CreateTask__backdrop"></div>
         </div>
     );
-};
+}
 
-export default connect(null, {createTask}) (CreateTask);
+const mapStateToProps = (state) => {
+    return {
+        socket: state.auth.socket
+    }
+}
+
+export default connect(mapStateToProps, {createTask}) (CreateTask);

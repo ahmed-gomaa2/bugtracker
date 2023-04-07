@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
     ADD_ENGINEER_HANDLER,
     ADD_ENGINEER_TO_TASK_FAIL,
-    ADD_ENGINEER_TO_TASK_SUCCESS,
+    ADD_ENGINEER_TO_TASK_SUCCESS, ADD_TASK_TO_ASSIGNED_TASKS,
     CHANGE_FILTER,
     CHANGE_FILTER_ASSIGNED,
     CHANGE_FILTER_WORKSPACE,
@@ -88,7 +88,7 @@ export const createWorkspace = workspace => async dispatch => {
         dispatch({
             type: CREATE_WORKSPACE_SUCCESS,
             workspace: workspace_data.data.workspaceData
-        })
+        });
     }catch (e) {
         if(e.response.data.error.type === 'jwt') {
             await dispatch(loadUser())
@@ -370,7 +370,14 @@ export const getTask = (workspace_id, id) => async dispatch => {
     }
 }
 
-export const createTask = taskData => async dispatch => {
+export const addTaskToAssignedTasks = task => {
+    return {
+        type: ADD_TASK_TO_ASSIGNED_TASKS,
+        newTask: task
+    }
+}
+
+export const createTask = (taskData, socket) => async dispatch => {
     try {
         const data = {
             ...taskData,
@@ -383,7 +390,18 @@ export const createTask = taskData => async dispatch => {
         dispatch({
             type: CREATE_TASK_SUCCESS,
             newTask: res.data
-        })
+        });
+
+        if(res.status === 200) {
+            const data = {
+                engineers: res.data.engineers,
+                task: res.data
+            };
+
+            console.log(socket, data);
+
+            socket.emit('create-task', data);
+        }
 
     }catch (e) {
         if(e.response.data.error.type === 'jwt') {

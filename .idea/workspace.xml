@@ -3,60 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="fa031f02-f3f1-4380-a407-2186fd0228cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Assignees/Assignees.Modify/Assignees.Modify.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Assignees/Assignees.Modify/Assignees.Modify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Assignees/Assignees.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Assignees/Assignees.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Assignees/Assignees.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Assignees/Assignees.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/End/End.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/End/End.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/End/End.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/End/End.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Link/Link.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Link/Link.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Link/Link.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Link/Link.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Priority/Priority.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Priority/Priority.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Priority/Priority.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Priority/Priority.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Status/Status.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Status/Status.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Status/Status.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Status/Status.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Type/Type.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Type/Type.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Type/Type.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Type/Type.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/Workspace.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/Workspace.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filter/Filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filter/Filter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filter/Filter.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filter/Filter.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filters.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filters.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/TaskRow/TaskRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/TaskRow/TaskRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/TaskRow/TaskRow.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/TaskRow/TaskRow.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/TasksContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/TasksContainer/TasksContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/WorkspaceBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/WorkspaceBody/WorkspaceBody.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesList/WorkspacesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesList/WorkspacesList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesList/WorkspacesListItem/WorkspacesListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesList/WorkspacesListItem/WorkspacesListItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesList/WorkspacesListItem/WorkspacesListItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesList/WorkspacesListItem/WorkspacesListItem.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Landing/Jumbotron/Jumbotron.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Landing/Jumbotron/Jumbotron.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/Task/Task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Task/Task.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/Task/Task.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CreateTask/CreateTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CreateTask/CreateTask.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/action.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/action.types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/auth.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/auth.action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/action/ui.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/ui.action.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/workspace.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/workspace.action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/reducer/auth.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/auth.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/reducer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/reducer/ui.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/ui.reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/reducer/workspaces.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/workspaces.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/auth/get.all.users.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/get.all.users.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/auth/get.users.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/get.users.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/auth/load.user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/load.user.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/auth/login.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/login.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/workspace/add.engineer.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspace/add.engineer.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/workspace/change.description.task.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspace/change.description.task.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/workspace/change.title.task.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspace/change.title.task.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/workspace/create.task.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspace/create.task.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/workspace/get.task.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspace/get.task.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/workspaces/get.workspace.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspaces/get.workspace.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/socket/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/socket/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +47,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/engah/Desktop/js",
+    "last_opened_file_path": "D:/Projects/fullstack/employ-me-back",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
@@ -215,6 +172,16 @@
       <workItem from="1678175219513" duration="16906000" />
       <workItem from="1678210811201" duration="7330000" />
       <workItem from="1678464636833" duration="38000" />
+      <workItem from="1679320412770" duration="3057000" />
+      <workItem from="1679389598363" duration="618000" />
+      <workItem from="1679578202545" duration="1603000" />
+      <workItem from="1680176050912" duration="577000" />
+      <workItem from="1680176984105" duration="1371000" />
+      <workItem from="1680205917614" duration="1227000" />
+      <workItem from="1680724959222" duration="1845000" />
+      <workItem from="1680733406884" duration="75000" />
+      <workItem from="1680784678104" duration="604000" />
+      <workItem from="1680835580109" duration="4814000" />
     </task>
     <servers />
   </component>

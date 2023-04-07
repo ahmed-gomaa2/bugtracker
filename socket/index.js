@@ -24,6 +24,12 @@ module.exports = (app, io) => {
             });
         });
 
+        socket.on('create-task', data => {
+            data.engineers.map(eng => {
+                io.to(eng.id).emit('create_task', data);
+            })
+        });
+
         socket.on('disconnect', () => {
             console.log('USER WITH ID: ' + socket.id + ' DISCONNECTED');
         });

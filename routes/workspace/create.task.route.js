@@ -39,21 +39,28 @@ module.exports = app => {
                          if(insertTaskError) {
                              res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: insertEngineerError}})
                          }else {
-                             const currentEngineer = {
-                                 id: insertEngineerRes.insertId,
-                                 user_id: data.engineers[i].id,
-                                 task_id: insertTaskRes.insertId
-                             }
-                             engineers.push(currentEngineer);
-                             if(i === data.engineers.length - 1) {
-                                 const task = {
-                                     id: insertTaskRes.insertId,
-                                     ...data,
-                                     engineers: engineers
-                                 };
-                                 console.log('is this the problem')
-                                 res.status(200).send(task);
-                             }
+                             const getCurrentEngineerDataQuery = "SELECT username, id, email FROM user WHERE id = ?";
+                             connection.query(getCurrentEngineerDataQuery, [data.engineers[i].id], (getDataError, getDataRes) => {
+                                 if(getDataError) {
+                                    res.status(500).json({error: {type: 'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: getDataError}})
+                                 }else {
+                                     const currentEngineer = {
+                                         ...getDataRes[0]
+                                     };
+
+                                     engineers.push(currentEngineer);
+                                     if(i === data.engineers.length - 1) {
+                                         const task = {
+                                             id: insertTaskRes.insertId,
+                                             ...data,
+                                             engineers: engineers,
+                                             owner: true
+                                         };
+                                         console.log('is this the problem')
+                                         res.status(200).send(task);
+                                     }
+                                 }
+                             })
                          }
                     });
                 }

@@ -281,7 +281,7 @@ export default (state = initialState, action) => {
         case actionTypes.CREATE_TASK_SUCCESS:
             return (() => {
                 const filteredTasksCopy = [...state.filteredWorkspaceTasks];
-                const filtersCopy = {...state.filters};
+                const filtersCopy = {...state.workspaceFilters};
 
                 if((action.newTask.type == filtersCopy.type || filtersCopy.type == 0) && (action.newTask.status == filtersCopy.status || filtersCopy.status == 0) && (action.newTask.priority == filtersCopy.priority || filtersCopy.priority == 0)) {
                     filteredTasksCopy.push(action.newTask);
@@ -435,6 +435,17 @@ export default (state = initialState, action) => {
                         tasksAssignedToMe: tasksAssignedToMeCopy,
                         tasksAssignedToMeFiltered: tasksAssignedToMeFilteredCopy
                     }
+                }
+            })();
+        case actionTypes.ADD_TASK_TO_ASSIGNED_TASKS:
+            return (() => {
+                const filtersCopy = {
+                    ...state.assignedFilters
+                }
+                return {
+                    ...state,
+                    assignedTasks: [...state.tasksAssignedToMe, action.task],
+                    tasksAssignedToMeFiltered: ((action.newTask.type == filtersCopy.type || filtersCopy.type == 0) && (action.newTask.status == filtersCopy.status || filtersCopy.status == 0) && (action.newTask.priority == filtersCopy.priority || filtersCopy.priority == 0)) ? [...state.tasksAssignedToMeFiltered, action.newTask] : state.tasksAssignedToMeFiltered
                 }
             })();
         default:
