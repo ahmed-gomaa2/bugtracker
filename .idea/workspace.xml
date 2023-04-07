@@ -3,16 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="fa031f02-f3f1-4380-a407-2186fd0228cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CreateTask/CreateTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CreateTask/CreateTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Type/Type.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Type/Type.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/action.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/action.types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/auth.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/auth.action.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/workspace.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/workspace.action.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/reducer/workspaces.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/workspaces.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/auth/login.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/login.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/workspace/create.task.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspace/create.task.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/workspace/get.task.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspace/get.task.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/workspaces/get.workspace.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspaces/get.workspace.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/socket/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/socket/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,17 +37,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Projects/fullstack/employ-me-back",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/fullstack/employ-me-back&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\prime-projects\bug-tracker\client\src\screens\Dashboard\Body\Home" />
@@ -181,7 +176,8 @@
       <workItem from="1680724959222" duration="1845000" />
       <workItem from="1680733406884" duration="75000" />
       <workItem from="1680784678104" duration="604000" />
-      <workItem from="1680835580109" duration="4814000" />
+      <workItem from="1680835580109" duration="5558000" />
+      <workItem from="1680851202066" duration="2274000" />
     </task>
     <servers />
   </component>

@@ -5,7 +5,7 @@ import {
     ADD_ENGINEER_TO_TASK_SUCCESS, ADD_TASK_TO_ASSIGNED_TASKS,
     CHANGE_FILTER,
     CHANGE_FILTER_ASSIGNED,
-    CHANGE_FILTER_WORKSPACE,
+    CHANGE_FILTER_WORKSPACE, CHANGE_TASK_ASSIGNED_TO_ME_TYPE,
     CHANGE_TASK_DESCRIPTION_FAIL,
     CHANGE_TASK_DESCRIPTION_SUCCESS,
     CHANGE_TASK_END_DATE_FAIL,
@@ -262,10 +262,17 @@ export const addEngineerToTask = (user_id, task_id, workspace_id, socket, task, 
     }
 }
 
-export const changeType = (id, type, workspace_id, navigate) => async dispatch => {
+export const changeTaskAssignedToMeType = task => {
+    return {
+        type: CHANGE_TASK_ASSIGNED_TO_ME_TYPE,
+        newTask: task
+    }
+}
+
+export const changeType = (task, type, workspace_id, navigate, socket) => async dispatch => {
     try {
         const data = {
-            id,
+            id: task.id,
             type,
             workspace_id
         };
@@ -278,6 +285,16 @@ export const changeType = (id, type, workspace_id, navigate) => async dispatch =
             task_id: res.data.id,
             workspace_id: res.data.workspace_id
         });
+
+        if(res.status === 200) {
+            const data = {
+                engineers: task.engineers,
+                task: task,
+                type: type
+            };
+
+            socket.emit('change-type', data);
+        }
     }catch (e) {
         if(e.response.data.error.type === 'jwt') {
             await dispatch(loadUser())

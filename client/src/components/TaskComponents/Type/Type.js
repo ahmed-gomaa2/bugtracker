@@ -32,7 +32,7 @@ const Type = props => {
 
     const typeClickHandler = t => {
         if(props.type != t) {
-            props.changeType(props.task.id, +t, props.task.workspace_id, navigate);
+            props.changeType(props.task, +t, props.task.workspace_id, navigate, props.socket);
         }
         setEditing(false);
     }
@@ -84,4 +84,10 @@ const Type = props => {
     );
 };
 
-export default connect(null, {changeType}) (Type);
+const mapStateToProps = (state) => {
+    return {
+        socket: state.auth.socket
+    }
+}
+
+export default connect(mapStateToProps, {changeType}) (Type);

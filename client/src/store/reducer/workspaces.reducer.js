@@ -442,10 +442,31 @@ export default (state = initialState, action) => {
                 const filtersCopy = {
                     ...state.assignedFilters
                 }
+                action.newTask.owner = false;
                 return {
                     ...state,
                     assignedTasks: [...state.tasksAssignedToMe, action.task],
                     tasksAssignedToMeFiltered: ((action.newTask.type == filtersCopy.type || filtersCopy.type == 0) && (action.newTask.status == filtersCopy.status || filtersCopy.status == 0) && (action.newTask.priority == filtersCopy.priority || filtersCopy.priority == 0)) ? [...state.tasksAssignedToMeFiltered, action.newTask] : state.tasksAssignedToMeFiltered
+                }
+            })();
+        case actionTypes.CHANGE_TASK_ASSIGNED_TO_ME_TYPE:
+            return (() => {
+                console.log(action.newTask);
+                const tasksAssignedToMeCopy = [...state.tasksAssignedToMe];
+                const modifiedTask = tasksAssignedToMeCopy.filter(t => t.id == action.newTask.id)[0];
+                if(!modifiedTask) return state;
+                modifiedTask.type = action.newTask.type;
+                const modifiedTaskIndex = tasksAssignedToMeCopy.findIndex(t => t.id === modifiedTask.id);
+                if(modifiedTaskIndex == -1) return state;
+                tasksAssignedToMeCopy[modifiedTaskIndex] = modifiedTask;
+                const filteredTasksAssignedToMeCopy = [...state.tasksAssignedToMeFiltered];
+                const modifiedTaskIndexInsideFilteredTasks = filteredTasksAssignedToMeCopy.findIndex(t => t.id === modifiedTask.id);
+                if(modifiedTaskIndexInsideFilteredTasks == -1) return state;
+                filteredTasksAssignedToMeCopy[modifiedTaskIndexInsideFilteredTasks] = modifiedTask;
+                return {
+                    ...state,
+                    assignedTasks: tasksAssignedToMeCopy,
+                    tasksAssignedToMeFiltered: filteredTasksAssignedToMeCopy
                 }
             })();
         default:

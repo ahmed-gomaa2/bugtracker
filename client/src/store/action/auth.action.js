@@ -19,13 +19,14 @@ import {
 import setHeadersHelper from "../../utls/set.headers.helper";
 import {
     addEngineerHandler,
-    addTaskToAssignedTasks,
+    addTaskToAssignedTasks, changeTaskAssignedToMeType,
     fetchWorkspaces,
     getTasksAssignedToMe,
     removeEngineerHandler
 } from "./workspace.action";
 import io from 'socket.io-client';
 import {setAlert} from "./notifications.action";
+import React from "react";
 
 const loadUserStart = () => {
     return {
@@ -67,20 +68,43 @@ export const loadUser = (navigate) => async dispatch => {
             socket.emit('join_room', user.data.id);
 
             socket.on('engineer_removed', data => {
-                dispatch(setAlert(`${user.data.id == data.user_id ? 'You have ' : `${data.task.engineers.filter(e => e.id == data.user_id)[0].username} has `}been removed from the ${data.task.title} task.`, 'danger'));
+                dispatch(setAlert(`${user.data.id == data.user_id ? 'You have ' : `${data.task.engineers.filter(e => e.id == data.user_id)[0].username} has `}been removed from the ${data.task.title} task. 🥹`, 'danger'));
                 dispatch(removeEngineerHandler(data.task, data.user_id, user.data.id))
             });
 
             socket.on('engineer_added', data => {
                 console.log(data);
                 dispatch(addEngineerHandler(data.task, data.user_id, user.data.id));
-                dispatch(setAlert(`${data.user_id == user.data.id ? 'You have ' : `${data.task.engineers.filter(e => e.id == data.user_id)[0].username} has`} been added to ${data.task.title} task.`, 'success'))
+                dispatch(setAlert(`${data.user_id == user.data.id ? 'You have ' : `${data.task.engineers.filter(e => e.id == data.user_id)[0].username} has`} been added to ${data.task.title} task. 🎉`, 'success'))
             });
             socket.on('create_task', data => {
                 console.log(data);
                 dispatch(addTaskToAssignedTasks(data.task));
                 dispatch(setAlert(`${data.task.title} has been created 🎉`, 'success'));
             });
+
+            (() => {
+                const types= {
+                    1: {
+                        name: 'bug',
+                        icon: <i className="fa-solid fa-bug"></i>
+                    },
+
+                    2: {
+                        name: 'feature',
+                        icon: <i className="fa-solid fa-microchip"></i>
+                    },
+                    3: {
+                        name: 'task',
+                        icon: <i className="fa-solid fa-list-check"></i>
+                    }
+                }
+                socket.on('change_type', data => {
+                    data.task.type = data.type;
+                    dispatch(changeTaskAssignedToMeType(data.task));
+                    dispatch(setAlert(`${data.task.title}'s title was changed to ${types[data.type].name}`, 'success'))
+                })
+            })();
         }
 
         dispatch(loadUserEnd());
