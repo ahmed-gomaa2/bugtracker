@@ -33,9 +33,21 @@ module.exports = (app, io) => {
         socket.on('change-type', data => {
             data.engineers.map(eng => {
                 io.to(eng.id).emit('change_type', data);
-            })
+            });
+        });
 
-        })
+        socket.on('change-status', data => {
+            console.log(data);
+            const engineers = [
+                    ...data.engineers.map(eng => eng.id),
+                    data.task.owner_id
+            ];
+            console.log(engineers);
+            engineers.filter(eng => eng != data.currentUser.id).map(eng => {
+                console.log(eng);
+                io.to(eng).emit('change_status', data);
+            });
+        });
 
         socket.on('disconnect', () => {
             console.log('USER WITH ID: ' + socket.id + ' DISCONNECTED');

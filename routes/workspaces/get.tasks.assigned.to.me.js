@@ -15,7 +15,7 @@ module.exports = app => {
                 // res.status(200).send(getIdsResult)
                 const tasks = [];
                 for(let i = 0; i < getIdsResult.length; i++) {
-                    const getTaskQuery = 'SELECT * FROM tasks WHERE id = ?';
+                    const getTaskQuery = 'SELECT tasks.id, tasks.title, tasks.description, tasks.type, tasks.status, tasks.solution, tasks.start_date, tasks.end_date, tasks.priority, tasks.workspace_id, workspaces.owner_id FROM tasks INNER JOIN workspaces ON tasks.workspace_id = workspaces.id WHERE tasks.id = ?';
                     connection.query(getTaskQuery, getIdsResult[i].task_id, (getTaskError, getTaskResult) => {
                         if(getTaskError) {
                             res.status(500).json({error: {type:'server', msg: 'SOMETHING WENT WRONG WITH THE SERVER!', err: getTaskError}})

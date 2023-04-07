@@ -19,7 +19,7 @@ import {
 import setHeadersHelper from "../../utls/set.headers.helper";
 import {
     addEngineerHandler,
-    addTaskToAssignedTasks, changeTaskAssignedToMeType,
+    addTaskToAssignedTasks, changeTaskAssignedToMeType, changeTaskStatus,
     fetchWorkspaces,
     getTasksAssignedToMe,
     removeEngineerHandler
@@ -103,6 +103,38 @@ export const loadUser = (navigate) => async dispatch => {
                     data.task.type = data.type;
                     dispatch(changeTaskAssignedToMeType(data.task));
                     dispatch(setAlert(`${data.task.title}'s title was changed to ${types[data.type].name}`, 'success'))
+                })
+            })();
+            (() => {
+                const status = {
+                    1: {
+                        name: 'not started',
+                        icon: <i className="fa-solid fa-face-sad-tear"></i>
+                    },
+                    2: {
+                        name: 'in progress',
+                        icon: <i className="fa-solid fa-laptop-code"></i>
+                    },
+                    3: {
+                        name: 'to be tested',
+                        icon: <i className="fa-solid fa-circle-pause"></i>
+                    },
+                    4: {
+                        name: 'done',
+                        icon: <i className="fa-solid fa-face-smile"></i>
+                    },
+                }
+                socket.on('change_status', data => {
+                    data.task.status = data.status;
+                    console.log(data);
+
+                    if(data.status == 4) {
+                        dispatch(setAlert(`Well done ${data.task.title}'s has been completed 🎉`, 'success'))
+                    }else {
+                        dispatch(setAlert(`${data.task.title}'s status was changed to ${status[data.status].name}`, 'primary'))
+                    }
+
+                    dispatch(changeTaskStatus(data.task, user.data));
                 })
             })();
         }

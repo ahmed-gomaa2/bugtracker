@@ -216,6 +216,7 @@ export default (state = initialState, action) => {
                 } else {
                     const assignedTasksCopy = [...state.tasksAssignedToMe];
                     const modifiedTask = assignedTasksCopy.filter(t=> t.id == action.task_id)[0];
+                    if(!modifiedTask) return state;
                     modifiedTask.status = +action.newStatus;
                     console.log(modifiedTask);
                     const taskIndexInAssignedToMeTasks = assignedTasksCopy.indexOf(assignedTasksCopy.filter(t => t.id == action.task_id)[0]);

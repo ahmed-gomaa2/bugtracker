@@ -3,11 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="fa031f02-f3f1-4380-a407-2186fd0228cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Type/Type.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Type/Type.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Status/Status.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Status/Status.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/action.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/action.types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/auth.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/auth.action.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/workspace.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/workspace.action.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/reducer/workspaces.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/workspaces.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/workspaces/get.tasks.assigned.to.me.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspaces/get.tasks.assigned.to.me.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/workspaces/get.workspace.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspaces/get.workspace.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/socket/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/socket/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,7 +179,7 @@
       <workItem from="1680733406884" duration="75000" />
       <workItem from="1680784678104" duration="604000" />
       <workItem from="1680835580109" duration="5558000" />
-      <workItem from="1680851202066" duration="2274000" />
+      <workItem from="1680851202066" duration="8025000" />
     </task>
     <servers />
   </component>

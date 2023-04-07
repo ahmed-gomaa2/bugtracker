@@ -31,7 +31,7 @@ const Status = props => {
 
     const statusClickHandler = async s => {
         if(props.type != s) {
-            props.changeStatus(props.task.id, +s, props.task.workspace_id);
+            props.changeStatus(props.task, +s, props.task.workspace_id, props.user, props.socket);
         }
         setEditing(false);
         setHovered(false);
@@ -92,7 +92,8 @@ const Status = props => {
 const mapStateToProps = state => {
     return {
         user: state.auth.user,
-        workspaceData: state.workspaces.currentWorkspaceData
+        workspaceData: state.workspaces.currentWorkspaceData,
+        socket: state.auth.socket
     }
 }
 
