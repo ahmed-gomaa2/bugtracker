@@ -19,7 +19,11 @@ import {
 import setHeadersHelper from "../../utls/set.headers.helper";
 import {
     addEngineerHandler,
-    addTaskToAssignedTasks, changeTaskAssignedToMeType, changeTaskStatus,
+    addTaskToAssignedTasks,
+    changeEndDateAssigned,
+    changeTaskAssignedToMePriority,
+    changeTaskAssignedToMeType,
+    changeTaskStatus,
     fetchWorkspaces,
     getTasksAssignedToMe,
     removeEngineerHandler
@@ -52,11 +56,11 @@ export const loadUser = (navigate) => async dispatch => {
             user: user.data
         });
 
-        await dispatch(fetchAllUsers());
+        dispatch(fetchAllUsers());
 
-        await dispatch(fetchWorkspaces());
+        dispatch(fetchWorkspaces());
 
-        await dispatch(getTasksAssignedToMe());
+        dispatch(getTasksAssignedToMe());
 
         if(user.status === 200) {
             const socket = io.connect('http://localhost:8080/');
@@ -136,6 +140,25 @@ export const loadUser = (navigate) => async dispatch => {
 
                     dispatch(changeTaskStatus(data.task, user.data));
                 })
+            })();
+
+            socket.on('change_date', data => {
+                data.task.end_date = data.end_date;
+                const date = new Date(data.end_date).toLocaleDateString('en-CA');
+                dispatch(setAlert(`${data.task.title}'s end date was changed to ${date}`, 'primary'))
+                dispatch(changeEndDateAssigned(data.task));
+            });
+            (() => {
+                const priorities = {
+                    1: 'high',
+                    2: 'medium',
+                    3: 'low'
+                }
+                socket.on('change_priority', data => {
+                    data.task.priority = data.priority;
+                    dispatch(setAlert(`${data.task.title}'s priority was changed to ${priorities[data.priority]}`, 'primary'));
+                    dispatch(changeTaskAssignedToMePriority(data.task));
+                });
             })();
         }
 

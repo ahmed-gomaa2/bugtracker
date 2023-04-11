@@ -3,13 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="fa031f02-f3f1-4380-a407-2186fd0228cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Status/Status.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Status/Status.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/End/End.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/End/End.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TaskComponents/Priority/Priority.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TaskComponents/Priority/Priority.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UI/Alert/Alert.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/Alert/Alert.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/action.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/action.types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/auth.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/auth.action.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/action/workspace.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/workspace.action.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/reducer/workspaces.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/workspaces.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/workspaces/get.tasks.assigned.to.me.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspaces/get.tasks.assigned.to.me.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/workspaces/get.workspace.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspaces/get.workspace.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/socket/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/socket/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +44,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Projects/fullstack/employ-me-back&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/fullstack/todoist&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -179,7 +179,11 @@
       <workItem from="1680733406884" duration="75000" />
       <workItem from="1680784678104" duration="604000" />
       <workItem from="1680835580109" duration="5558000" />
-      <workItem from="1680851202066" duration="8025000" />
+      <workItem from="1680851202066" duration="8237000" />
+      <workItem from="1680947489162" duration="6809000" />
+      <workItem from="1681153815774" duration="35000" />
+      <workItem from="1681170915217" duration="1461000" />
+      <workItem from="1681223336076" duration="3286000" />
     </task>
     <servers />
   </component>

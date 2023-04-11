@@ -2,10 +2,15 @@ import axios from 'axios';
 import {
     ADD_ENGINEER_HANDLER,
     ADD_ENGINEER_TO_TASK_FAIL,
-    ADD_ENGINEER_TO_TASK_SUCCESS, ADD_TASK_TO_ASSIGNED_TASKS,
+    ADD_ENGINEER_TO_TASK_SUCCESS,
+    ADD_TASK_TO_ASSIGNED_TASKS,
     CHANGE_FILTER,
     CHANGE_FILTER_ASSIGNED,
-    CHANGE_FILTER_WORKSPACE, CHANGE_TASK__STATUS, CHANGE_TASK_ASSIGNED_TO_ME_TYPE,
+    CHANGE_FILTER_WORKSPACE,
+    CHANGE_TASK__STATUS,
+    CHANGE_TASK_ASSIGNED_TO_ME_DATE,
+    CHANGE_TASK_ASSIGNED_TO_ME_PRIORITY,
+    CHANGE_TASK_ASSIGNED_TO_ME_TYPE,
     CHANGE_TASK_DESCRIPTION_FAIL,
     CHANGE_TASK_DESCRIPTION_SUCCESS,
     CHANGE_TASK_END_DATE_FAIL,
@@ -37,7 +42,8 @@ import {
     GET_TASKS_ASSIGNED_TO_ME_FAIL,
     GET_TASKS_ASSIGNED_TO_ME_SUCCESS,
     REMOVE_ENGINEER_FROM_TASK_FAIL,
-    REMOVE_ENGINEER_FROM_TASK_SUCCESS, REMOVE_ENGINEER_HANDLER,
+    REMOVE_ENGINEER_FROM_TASK_SUCCESS,
+    REMOVE_ENGINEER_HANDLER,
     START_FETCHING_WORKSPACE_END,
     START_FETCHING_WORKSPACE_START,
     TASK_ID_CHANGE_SUCCESS
@@ -354,10 +360,17 @@ export const changeStatus = (task, status, workspace_id, owner, socket) => async
     }
 }
 
-export const changePriority = (id, priority, workspace_id) => async dispatch => {
+export const changeTaskAssignedToMePriority = task => {
+    return {
+        type: CHANGE_TASK_ASSIGNED_TO_ME_PRIORITY,
+        task
+    }
+}
+
+export const changePriority = (task, priority, workspace_id, socket) => async dispatch => {
     try{
         const data = {
-            id,
+            id: task.id,
             priority,
             workspace_id
         };
@@ -368,6 +381,15 @@ export const changePriority = (id, priority, workspace_id) => async dispatch => 
             workspace_id: res.data.workspace_id,
             newPriority: res.data.priority
         });
+
+        if(res.status === 200) {
+            const socketData = {
+                task,
+                priority
+            };
+
+            socket.emit('change-priority', socketData);
+        }
     }catch (e) {
         if(e.response.data.error.type === 'jwt') {
             await dispatch(loadUser())
@@ -378,10 +400,17 @@ export const changePriority = (id, priority, workspace_id) => async dispatch => 
     }
 }
 
-export const changeEndDate = (id, end_date, workspace_id) => async dispatch => {
+export const changeEndDateAssigned = task => {
+    return {
+        type: CHANGE_TASK_ASSIGNED_TO_ME_DATE,
+        task
+    }
+}
+
+export const changeEndDate = (task, end_date, workspace_id, socket) => async dispatch => {
     try {
         const data = {
-            id,
+            id: task.id,
             end_date,
             workspace_id
         };
@@ -393,13 +422,27 @@ export const changeEndDate = (id, end_date, workspace_id) => async dispatch => {
             newDate: res.data.end_date,
             task_id: res.data.id
         });
+
+        console.log(res);
+
+        if(res.status === 200) {
+            console.log(200);
+            const socketData = {
+                task,
+                end_date
+            };
+
+            console.log(socketData, socket);
+
+            socket.emit('change-date', socketData);
+        }
     }catch (e) {
         if(e.response.data.error.type === 'jwt') {
             await dispatch(loadUser())
         }
         dispatch({
             type: CHANGE_TASK_END_DATE_FAIL
-        })
+        });
     }
 }
 

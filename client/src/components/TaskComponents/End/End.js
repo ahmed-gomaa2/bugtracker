@@ -18,7 +18,7 @@ const End = props => {
 
     const dateSubmitHandler = e => {
         if(endDate > new Date(props.task.start_date).toLocaleDateString('en-CA')) {
-            props.changeEndDate(props.task.id, new Date(endDate), props.task.workspace_id);
+            props.changeEndDate(props.task, new Date(endDate), props.task.workspace_id, props.socket);
         }
         setEditing(false);
     }
@@ -48,4 +48,10 @@ const End = props => {
     );
 };
 
-export default connect(null, {changeEndDate}) (End);
+const mapStateToProps = (state) => {
+    return {
+        socket: state.auth.socket
+    }
+}
+
+export default connect(mapStateToProps, {changeEndDate}) (End);

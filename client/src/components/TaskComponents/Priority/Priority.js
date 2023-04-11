@@ -13,7 +13,7 @@ const Priority = props => {
     const [editing, setEditing] = useState(false);
     const priorityClickHandler = k => {
         if(k != props.task.priority) {
-            props.changePriority(props.task.id, k, props.task.workspace_id);
+            props.changePriority(props.task, k, props.task.workspace_id, props.socket);
         }
         setEditing(false);
     }
@@ -62,4 +62,10 @@ const Priority = props => {
     );
 };
 
-export default connect(null, {changePriority}) (Priority);
+const mapStateToProps = (state) => {
+    return {
+        socket: state.auth.socket
+    }
+}
+
+export default connect(mapStateToProps, {changePriority}) (Priority);

@@ -4,6 +4,7 @@
   right: 20px;
   display: inline-block;
   z-index: 1000;
+  border-radius: 20px;
 
   .Alert__item {
     padding: 10px;
@@ -11,6 +12,7 @@
     opacity: 0.9;
     background: #f4f4f4;
     color: #333;
+    border-radius: 5px;
   }
 
   .Alert__item-white {
