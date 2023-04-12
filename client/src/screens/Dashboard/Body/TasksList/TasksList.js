@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import TaskRow from "../Workspace/WorkspaceBody/TasksContainer/TaskRow/TaskRow";
 import TasksContainer from "../Workspace/WorkspaceBody/TasksContainer/TasksContainer";
 import Filters from "../Workspace/WorkspaceBody/Filters/Filters";
+import Spinner from "../../../../components/UI/Spinner/Spinner";
 
 
 const TasksList = (props) => {
@@ -12,14 +13,18 @@ const TasksList = (props) => {
                 <h2>Tasks</h2>
             </div>
             <Filters />
-            <TasksContainer tasks={props.tasks} />
+            {
+                props.fetchingTasksAssignedToMe ? <Spinner /> : <TasksContainer tasks={props.tasks} />
+            }
+
         </div>
     );
 };
 
 const mapStateToProps = (state) => {
     return {
-        tasks: state.workspaces.tasksAssignedToMeFiltered
+        tasks: state.workspaces.tasksAssignedToMeFiltered,
+        fetchingTasksAssignedToMe: state.workspaces.fetchingTasksAssignedToMe
     }
 }
 

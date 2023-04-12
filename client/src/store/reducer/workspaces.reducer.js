@@ -2,7 +2,7 @@ import * as actionTypes from '../action/action.types';
 import {
     FETCH_WORKSPACE_DATA_SUCCESS,
     START_FETCHING_WORKSPACE_END,
-    START_FETCHING_WORKSPACE_START
+    START_FETCHING_WORKSPACE_START, START_FETCHING_WORKSPACES
 } from "../action/action.types";
 import filters from "../../screens/Dashboard/Body/Workspace/WorkspaceBody/Filters/Filters";
 
@@ -16,6 +16,8 @@ const initialState = {
     tasksAssignedToMe: [],
     tasksAssignedToMeFiltered: [],
     fetchingWorkspace: true,
+    fetchingTasksAssignedToMe: false,
+    fetchingWorkspaces: false,
     workspaceFilters: {
         type: 0,
         status: 0,
@@ -454,7 +456,7 @@ export default (state = initialState, action) => {
             return (() => {
                 console.log(action.newTask);
                 const tasksAssignedToMeCopy = [...state.tasksAssignedToMe];
-                const modifiedTask = tasksAssignedToMeCopy.filter(t => t.id == action.newTask.id)[0];
+                const modifiedTask = {...tasksAssignedToMeCopy.filter(t => t.id == action.newTask.id)[0]};
                 if(!modifiedTask) return state;
                 modifiedTask.type = action.newTask.type;
                 const modifiedTaskIndex = tasksAssignedToMeCopy.findIndex(t => t.id === modifiedTask.id);
@@ -474,7 +476,7 @@ export default (state = initialState, action) => {
             return (() => {
                 console.log(action.task);
                 const tasksAssignedToMeCopy = [...state.tasksAssignedToMe];
-                const modifiedTask = tasksAssignedToMeCopy.filter(t => t.id == action.task.id)[0];
+                const modifiedTask = {...tasksAssignedToMeCopy.filter(t => t.id == action.task.id)[0]};
                 if(!modifiedTask) return state;
                 modifiedTask.end_date = action.task.end_date;
                 const modifiedTaskIndex = tasksAssignedToMeCopy.findIndex(t => t.id === modifiedTask.id);
@@ -496,6 +498,7 @@ export default (state = initialState, action) => {
                 const tasksAssignedToMeCopy = [...state.tasksAssignedToMe];
                 const modifiedTask = tasksAssignedToMeCopy.filter(t => t.id == action.task.id)[0];
                 if(!modifiedTask) return state;
+                console.log(modifiedTask);
                 modifiedTask.priority = action.task.priority;
                 const modifiedTaskIndex = tasksAssignedToMeCopy.findIndex(t => t.id === modifiedTask.id);
                 if(modifiedTaskIndex == -1) return state;
@@ -510,6 +513,39 @@ export default (state = initialState, action) => {
                     tasksAssignedToMeFiltered: filteredTasksAssignedToMeCopy
                 }
             })();
+        case actionTypes.START_FETCHING_TASKS_ASSIGNED_TO_ME:
+            return {
+                ...state,
+                fetchingTasksAssignedToMe: !state.fetchingTasksAssignedToMe
+            }
+        case actionTypes.START_FETCHING_WORKSPACES:
+            return {
+                ...state,
+                fetchingWorkspaces: !state.fetchingWorkspaces
+            }
+
+        case actionTypes.CHANGE_TASK_ASSIGNED_TO_ME_TITLE:
+            return (() => {
+                console.log(action.task);
+                const tasksAssignedToMeCopy = [...state.tasksAssignedToMe];
+                const modifiedTask = {...tasksAssignedToMeCopy.filter(t => t.id == action.task.id)[0]};
+                if(!modifiedTask) return state;
+                console.log(action.task.title);
+                modifiedTask.title = action.task.title;
+                const modifiedTaskIndex = tasksAssignedToMeCopy.findIndex(t => t.id === modifiedTask.id);
+                if(modifiedTaskIndex == -1) return state;
+                tasksAssignedToMeCopy[modifiedTaskIndex] = modifiedTask;
+                const filteredTasksAssignedToMeCopy = [...state.tasksAssignedToMeFiltered];
+                const modifiedTaskIndexInsideFilteredTasks = filteredTasksAssignedToMeCopy.findIndex(t => t.id === modifiedTask.id);
+                if(modifiedTaskIndexInsideFilteredTasks == -1) return state;
+                filteredTasksAssignedToMeCopy[modifiedTaskIndexInsideFilteredTasks] = modifiedTask;
+                return {
+                    ...state,
+                    assignedTasks: tasksAssignedToMeCopy,
+                    tasksAssignedToMeFiltered: filteredTasksAssignedToMeCopy
+                }
+            })();
+
         default:
             return state;
     }

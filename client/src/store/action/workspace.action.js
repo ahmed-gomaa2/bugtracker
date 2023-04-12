@@ -9,7 +9,7 @@ import {
     CHANGE_FILTER_WORKSPACE,
     CHANGE_TASK__STATUS,
     CHANGE_TASK_ASSIGNED_TO_ME_DATE,
-    CHANGE_TASK_ASSIGNED_TO_ME_PRIORITY,
+    CHANGE_TASK_ASSIGNED_TO_ME_PRIORITY, CHANGE_TASK_ASSIGNED_TO_ME_TITLE,
     CHANGE_TASK_ASSIGNED_TO_ME_TYPE,
     CHANGE_TASK_DESCRIPTION_FAIL,
     CHANGE_TASK_DESCRIPTION_SUCCESS,
@@ -43,20 +43,28 @@ import {
     GET_TASKS_ASSIGNED_TO_ME_SUCCESS,
     REMOVE_ENGINEER_FROM_TASK_FAIL,
     REMOVE_ENGINEER_FROM_TASK_SUCCESS,
-    REMOVE_ENGINEER_HANDLER,
+    REMOVE_ENGINEER_HANDLER, START_FETCHING_TASKS_ASSIGNED_TO_ME,
     START_FETCHING_WORKSPACE_END,
-    START_FETCHING_WORKSPACE_START,
+    START_FETCHING_WORKSPACE_START, START_FETCHING_WORKSPACES,
     TASK_ID_CHANGE_SUCCESS
 } from "./action.types";
 import {loadUser} from "./auth.action";
 
+export const startFetchingWorkspaces = () => {
+    return {
+        type: START_FETCHING_WORKSPACES
+    }
+}
+
 export const fetchWorkspaces = () => async dispatch => {
     try{
+        dispatch(startFetchingWorkspaces());
         const workspaces = await axios.get('/fetch-workspaces');
         dispatch({
             type: FETCH_USER_WORKSPACE_SUCCESS,
             workspaces: workspaces.data
         });
+        dispatch(startFetchingWorkspaces());
     }catch (e) {
         if(e.response.data.error.type === 'jwt') {
             await dispatch(loadUser())
@@ -522,11 +530,18 @@ export const changeSelectedTask = task => {
     }
 }
 
-export const changeTitle = (newTitle, task_id, workspace_id) => async dispatch => {
+export const changeTaskAssignedTitle = task => {
+    return {
+        type: CHANGE_TASK_ASSIGNED_TO_ME_TITLE,
+        task
+    }
+}
+
+export const changeTitle = (newTitle, task, workspace_id, socket) => async dispatch => {
     try {
         const data = {
             title: newTitle,
-            id: task_id,
+            id: task.id,
             workspace_id
         }
         const res = await axios.put('/workspace/edit-title', data);
@@ -536,6 +551,16 @@ export const changeTitle = (newTitle, task_id, workspace_id) => async dispatch =
             task_id: res.data.id,
             workspace_id: res.data.workspace_id
         });
+
+        if(res.status === 200) {
+            const socketData = {
+                task,
+                title: newTitle
+            };
+
+            console.log(socket, socketData);
+            socket.emit('change-title', socketData);
+        }
     }catch (e) {
         if(e.response.data.error.type === 'jwt') {
             await dispatch(loadUser())
@@ -596,13 +621,21 @@ export const changeSolution = (newSolution, task_id, workspace_id) => async disp
     }
 }
 
+export const startFetchingTasksAssignedToMe = () => {
+    return {
+        type: START_FETCHING_TASKS_ASSIGNED_TO_ME
+    }
+}
+
 export const getTasksAssignedToMe = () => async dispatch => {
     try {
+        dispatch(startFetchingTasksAssignedToMe());
         const res = await axios.get('/assigned/tasks');
         dispatch({
             type: GET_TASKS_ASSIGNED_TO_ME_SUCCESS,
             tasks: res.data
-        })
+        });
+        dispatch(startFetchingTasksAssignedToMe());
     } catch (e) {
         if(e.response.data.error.type === 'jwt') {
             await dispatch(loadUser())

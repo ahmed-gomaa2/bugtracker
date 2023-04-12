@@ -3,6 +3,7 @@ import './WorkspacesList.scss';
 import WorkspacesItem from "./WorkspacesListItem/WorkspacesListItem";
 import {connect} from "react-redux";
 import {toggleWorkspaceCreateForm} from "../../../../store/action/ui.action";
+import Spinner from "../../../../components/UI/Spinner/Spinner";
 
 const WorkspacesList = props => {
     return (
@@ -18,20 +19,25 @@ const WorkspacesList = props => {
                     <span>Add New</span>
                 </p>
             </div>
-            <div className="Home__workspaces--menu">
-                {
-                    props.workspaces.map((ws, i) => (
-                        <WorkspacesItem ws={ws} key={i} />
-                    ))
-                }
-            </div>
+            {
+                props.fetchingWorkspaces ? <Spinner /> : (
+                    <div className="Home__workspaces--menu">
+                        {
+                            props.workspaces.map((ws, i) => (
+                                <WorkspacesItem ws={ws} key={i} />
+                            ))
+                        }
+                    </div>
+                )
+            }
         </div>
     );
 };
 
 const mapStateToProps = state => {
     return {
-        workspaces: state.workspaces.workspaces
+        workspaces: state.workspaces.workspaces,
+        fetchingWorkspaces: state.workspaces.fetchingWorkspaces
     }
 }
 

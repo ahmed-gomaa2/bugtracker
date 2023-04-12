@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {connect} from "react-redux";
 import {fetchWorkspaceData, deleteTask, changeTitle, changeDescription, changeSolution} from "../../../../../store/action/workspace.action";
@@ -14,15 +14,17 @@ import {toggleTaskOpen} from "../../../../../store/action/ui.action";
 const Task = props => {
     const [title, setTitle] = useState(props.task.title);
     const [desc, setDesc] = useState(props.task.description);
-    const [sol, setSol] = useState(props.task.solution)
+    const [sol, setSol] = useState(props.task.solution);
+    const solutionRef = useRef();
 
     useEffect(() => {
         
     }, []);
 
     const changeTitleHandler = e => {
-        if(title !== props.task.title && title.length > 4) {
-            props.changeTitle(title, props.task.id, props.task.workspace_id);
+        console.log(title, props.task.title);
+        if(title !== props.task.title && title.length >= 4) {
+            props.changeTitle(title, props.task, props.task.workspace_id, props.socket);
         } else {
             console.log('not changed');
         }
@@ -37,6 +39,7 @@ const Task = props => {
     const solChangeHandler = e => {
         if(sol!== props.task.solution && sol.length > 1) {
             props.changeSolution(sol, props.task.id, props.task.workspace_id);
+            console.log(e.target.blur);
         }
     }
 
@@ -61,7 +64,12 @@ const Task = props => {
                 </nav>
                 <div className="Task__content px-4 pt-2">
                     <div className="Task__content-name my-3">
-                        <form onBlur={e => changeTitleHandler(e)}>
+                        <form onSubmit={e => {
+                            e.preventDefault();
+                            changeTitleHandler(e);
+                            console.log(e);
+                            // e.target.querySelector('input').blur();
+                        }} onBlur={e => changeTitleHandler(e)}>
                             <input onChange={e => setTitle(e.target.value)} className={'border-0 h2'} type="text" value={title}/>
                         </form>
                     </div>
@@ -118,7 +126,11 @@ const Task = props => {
                     </table>
                     {
                         props.task.owner ? (
-                            <form onBlur={descChangeHandler} className="form mx-2">
+                            <form onSubmit={e => {
+                                e.preventDefault();
+                                descChangeHandler(e);
+                                // e.target.querySelector('textarea').blur();
+                            }} onBlur={descChangeHandler} className="form mx-2">
                                 <label htmlFor="" className={'my-2'}>Description: </label>
                                 <textarea onChange={e => setDesc(e.target.value)} className="border-0 w-100 mx-2" value={desc}/>
                             </form>
@@ -136,9 +148,13 @@ const Task = props => {
                                 <p className={'mx-3'}>{props.task.solution}</p>
                             </div>
                         ) : (
-                            <form onBlur={solChangeHandler} className="form mx-2">
+                            <form onSubmit={e => {
+                                e.preventDefault();
+                                solChangeHandler(e);
+                                // solutionRef.blur();
+                            }} onBlur={solChangeHandler} className="form mx-2">
                                 <label htmlFor="" className={'my-2'}>Solution: </label>
-                                <textarea placeholder={'Write your solution here!'} onChange={e => setSol(e.target.value)} className="border-0 w-100 mx-2" value={sol}/>
+                                <textarea ref={solutionRef} placeholder={'Write your solution here!'} onChange={e => setSol(e.target.value)} className="border-0 w-100 mx-2" value={sol}/>
                             </form>
                         )
                     }
@@ -152,7 +168,8 @@ const Task = props => {
 
 const mapStateToProps = state => {
     return {
-        task: state.workspaces.currentSelectedTask
+        task: state.workspaces.currentSelectedTask,
+        socket: state.auth.socket
     }
 }
 
