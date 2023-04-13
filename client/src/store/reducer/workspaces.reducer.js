@@ -407,7 +407,8 @@ export default (state = initialState, action) => {
                     return {
                         ...state,
                         tasksAssignedToMe: tasksAssignedToMeCopy,
-                        tasksAssignedToMeFiltered: tasksAssignedToMeFilteredCopy
+                        tasksAssignedToMeFiltered: tasksAssignedToMeFilteredCopy,
+                        currentSelectedTask: state.currentSelectedTask.id == action.task.id ? {...changedTask} : state.currentSelectedTask
                     }
                 }
             })();
@@ -436,7 +437,8 @@ export default (state = initialState, action) => {
                     return {
                         ...state,
                         tasksAssignedToMe: tasksAssignedToMeCopy,
-                        tasksAssignedToMeFiltered: tasksAssignedToMeFilteredCopy
+                        tasksAssignedToMeFiltered: tasksAssignedToMeFilteredCopy,
+                        currentSelectedTask: action.task.id == state.currentSelectedTask.id ? {...changedTask} : state.currentSelectedTask
                     }
                 }
             })();
@@ -448,7 +450,7 @@ export default (state = initialState, action) => {
                 action.newTask.owner = false;
                 return {
                     ...state,
-                    assignedTasks: [...state.tasksAssignedToMe, action.task],
+                    tasksAssignedToMe: [...state.tasksAssignedToMe, action.task],
                     tasksAssignedToMeFiltered: ((action.newTask.type == filtersCopy.type || filtersCopy.type == 0) && (action.newTask.status == filtersCopy.status || filtersCopy.status == 0) && (action.newTask.priority == filtersCopy.priority || filtersCopy.priority == 0)) ? [...state.tasksAssignedToMeFiltered, action.newTask] : state.tasksAssignedToMeFiltered
                 }
             })();
@@ -456,7 +458,7 @@ export default (state = initialState, action) => {
             return (() => {
                 console.log(action.newTask);
                 const tasksAssignedToMeCopy = [...state.tasksAssignedToMe];
-                const modifiedTask = {...tasksAssignedToMeCopy.filter(t => t.id == action.newTask.id)[0]};
+                const modifiedTask = tasksAssignedToMeCopy.filter(t => t.id == action.newTask.id)[0];
                 if(!modifiedTask) return state;
                 modifiedTask.type = action.newTask.type;
                 const modifiedTaskIndex = tasksAssignedToMeCopy.findIndex(t => t.id === modifiedTask.id);
@@ -468,15 +470,16 @@ export default (state = initialState, action) => {
                 filteredTasksAssignedToMeCopy[modifiedTaskIndexInsideFilteredTasks] = modifiedTask;
                 return {
                     ...state,
-                    assignedTasks: tasksAssignedToMeCopy,
-                    tasksAssignedToMeFiltered: filteredTasksAssignedToMeCopy
+                    tasksAssignedToMe: tasksAssignedToMeCopy,
+                    tasksAssignedToMeFiltered: filteredTasksAssignedToMeCopy,
+                    currentSelectedTask: state.currentSelectedTask.id == action.newTask.id ? {...modifiedTask} : state.currentSelectedTask
                 }
             })();
             case actionTypes.CHANGE_TASK_ASSIGNED_TO_ME_DATE:
             return (() => {
                 console.log(action.task);
                 const tasksAssignedToMeCopy = [...state.tasksAssignedToMe];
-                const modifiedTask = {...tasksAssignedToMeCopy.filter(t => t.id == action.task.id)[0]};
+                const modifiedTask = tasksAssignedToMeCopy.filter(t => t.id == action.task.id)[0];
                 if(!modifiedTask) return state;
                 modifiedTask.end_date = action.task.end_date;
                 const modifiedTaskIndex = tasksAssignedToMeCopy.findIndex(t => t.id === modifiedTask.id);
@@ -488,8 +491,9 @@ export default (state = initialState, action) => {
                 filteredTasksAssignedToMeCopy[modifiedTaskIndexInsideFilteredTasks] = modifiedTask;
                 return {
                     ...state,
-                    assignedTasks: tasksAssignedToMeCopy,
-                    tasksAssignedToMeFiltered: filteredTasksAssignedToMeCopy
+                    tasksAssignedToMe: tasksAssignedToMeCopy,
+                    tasksAssignedToMeFiltered: filteredTasksAssignedToMeCopy,
+                    currentSelectedTask: state.currentSelectedTask.id == action.task.id ? {...modifiedTask} : state.currentSelectedTask
                 }
             })();
             case actionTypes.CHANGE_TASK_ASSIGNED_TO_ME_PRIORITY:
@@ -507,10 +511,14 @@ export default (state = initialState, action) => {
                 const modifiedTaskIndexInsideFilteredTasks = filteredTasksAssignedToMeCopy.findIndex(t => t.id === modifiedTask.id);
                 if(modifiedTaskIndexInsideFilteredTasks == -1) return state;
                 filteredTasksAssignedToMeCopy[modifiedTaskIndexInsideFilteredTasks] = modifiedTask;
+                if(action.task.id == state.currentSelectedTask.id) {
+                    console.log('equal');
+                }
                 return {
                     ...state,
-                    assignedTasks: tasksAssignedToMeCopy,
-                    tasksAssignedToMeFiltered: filteredTasksAssignedToMeCopy
+                    tasksAssignedToMe: tasksAssignedToMeCopy,
+                    tasksAssignedToMeFiltered: filteredTasksAssignedToMeCopy,
+                    currentSelectedTask: state.currentSelectedTask.id == action.task.id ? {...modifiedTask} : state.currentSelectedTask
                 }
             })();
         case actionTypes.START_FETCHING_TASKS_ASSIGNED_TO_ME:
@@ -526,11 +534,10 @@ export default (state = initialState, action) => {
 
         case actionTypes.CHANGE_TASK_ASSIGNED_TO_ME_TITLE:
             return (() => {
-                console.log(action.task);
                 const tasksAssignedToMeCopy = [...state.tasksAssignedToMe];
                 const modifiedTask = {...tasksAssignedToMeCopy.filter(t => t.id == action.task.id)[0]};
+                console.log(modifiedTask);
                 if(!modifiedTask) return state;
-                console.log(action.task.title);
                 modifiedTask.title = action.task.title;
                 const modifiedTaskIndex = tasksAssignedToMeCopy.findIndex(t => t.id === modifiedTask.id);
                 if(modifiedTaskIndex == -1) return state;
@@ -541,11 +548,11 @@ export default (state = initialState, action) => {
                 filteredTasksAssignedToMeCopy[modifiedTaskIndexInsideFilteredTasks] = modifiedTask;
                 return {
                     ...state,
-                    assignedTasks: tasksAssignedToMeCopy,
-                    tasksAssignedToMeFiltered: filteredTasksAssignedToMeCopy
+                    tasksAssignedToMe: tasksAssignedToMeCopy,
+                    tasksAssignedToMeFiltered: filteredTasksAssignedToMeCopy,
+                    currentSelectedTask: state.currentSelectedTask.id == action.task.id ? {...modifiedTask} : state.currentSelectedTask
                 }
             })();
-
         default:
             return state;
     }

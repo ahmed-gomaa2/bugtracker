@@ -4,7 +4,7 @@ import TaskRow from "../Workspace/WorkspaceBody/TasksContainer/TaskRow/TaskRow";
 import TasksContainer from "../Workspace/WorkspaceBody/TasksContainer/TasksContainer";
 import Filters from "../Workspace/WorkspaceBody/Filters/Filters";
 import Spinner from "../../../../components/UI/Spinner/Spinner";
-
+import './TasksList.scss'
 
 const TasksList = (props) => {
     return (
@@ -13,9 +13,11 @@ const TasksList = (props) => {
                 <h2>Tasks</h2>
             </div>
             <Filters />
-            {
-                props.fetchingTasksAssignedToMe ? <Spinner /> : <TasksContainer tasks={props.tasks} />
-            }
+            <div style={{position: 'relative'}}>
+                {
+                    props.fetchingTasksAssignedToMe ? <Spinner /> : <TasksContainer tasks={props.tasks} />
+                }
+            </div>
 
         </div>
     );

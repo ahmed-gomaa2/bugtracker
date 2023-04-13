@@ -5,15 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/UI/Spinner/Spinner.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/Spinner/Spinner.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/TasksList/TasksList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/TasksList/TasksList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/Workspace/Task/Task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesList/WorkspacesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesList/WorkspacesList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesList/WorkspacesList.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/WorkspacesList/WorkspacesList.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/action/action.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/action.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/action/auth.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/auth.action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/action/workspace.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/action/workspace.action.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/TasksList/TasksList.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/screens/Dashboard/Body/TasksList/TasksList.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/reducer/workspaces.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducer/workspaces.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/workspaces/get.tasks.assigned.to.me.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/workspaces/get.tasks.assigned.to.me.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/socket/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/socket/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +182,10 @@
       <workItem from="1681170915217" duration="1461000" />
       <workItem from="1681223336076" duration="7325000" />
       <workItem from="1681266747369" duration="4214000" />
-      <workItem from="1681278884401" duration="4667000" />
+      <workItem from="1681278884401" duration="5222000" />
+      <workItem from="1681305760665" duration="2669000" />
+      <workItem from="1681354538449" duration="7709000" />
+      <workItem from="1681374214048" duration="2425000" />
     </task>
     <servers />
   </component>

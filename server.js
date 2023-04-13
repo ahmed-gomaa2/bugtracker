@@ -28,6 +28,7 @@ const getAllUsersRoute = require('./routes/auth/get.all.users.route');
 const getTaskRoute = require('./routes/workspace/get.task.route');
 const deleteTaskRoute = require('./routes/workspace/delete.task');
 const getTasksRoute = require('./routes/workspaces/get.tasks.assigned.to.me');
+const getTasTestRoute = require('./routes/workspace/test.queries');
 
 const {Server, Socket} = require('socket.io');
 const socketConnection = require('./socket/index');
@@ -85,6 +86,7 @@ getAllUsersRoute(app);
 getTaskRoute(app);
 deleteTaskRoute(app);
 getTasksRoute(app);
+getTasTestRoute(app);
 
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {
