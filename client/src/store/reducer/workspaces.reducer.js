@@ -333,7 +333,6 @@ export default (state = initialState, action) => {
             return (() => {
                 const modifiedTask = {...state.currentWorkspaceTasks.filter(t => t.id == action.task_id)[0]};
                 modifiedTask.description = action.newDescription;
-                console.log(modifiedTask);
                 const currentWorkspaceTasksCopy = [...state.currentWorkspaceTasks];
                 const taskIndexInCurrentWorkspaceTasksCopy = currentWorkspaceTasksCopy.indexOf(currentWorkspaceTasksCopy.filter(t => t.id == action.task_id)[0]);
                 currentWorkspaceTasksCopy[taskIndexInCurrentWorkspaceTasksCopy] = modifiedTask;
@@ -550,7 +549,28 @@ export default (state = initialState, action) => {
                     ...state,
                     tasksAssignedToMe: tasksAssignedToMeCopy,
                     tasksAssignedToMeFiltered: filteredTasksAssignedToMeCopy,
-                    currentSelectedTask: state.currentSelectedTask.id == action.task.id ? {...modifiedTask} : state.currentSelectedTask
+                    currentSelectedTask: state.currentSelectedTask.id == action.task.id ? {...state.currentSelectedTask, title: action.task.title} : state.currentSelectedTask
+                }
+            })();
+        case actionTypes.CHANGE_TASK_ASSIGNED_TO_ME_DESCRIPTION:
+            return (() => {
+                const tasksAssignedToMeCopy = [...state.tasksAssignedToMe];
+                const modifiedTask = {...tasksAssignedToMeCopy.filter(t => t.id == action.task.id)[0]};
+                console.log(modifiedTask);
+                if(!modifiedTask) return state;
+                modifiedTask.description = action.task.description;
+                const modifiedTaskIndex = tasksAssignedToMeCopy.findIndex(t => t.id === modifiedTask.id);
+                if(modifiedTaskIndex == -1) return state;
+                tasksAssignedToMeCopy[modifiedTaskIndex] = modifiedTask;
+                const filteredTasksAssignedToMeCopy = [...state.tasksAssignedToMeFiltered];
+                const modifiedTaskIndexInsideFilteredTasks = filteredTasksAssignedToMeCopy.findIndex(t => t.id === modifiedTask.id);
+                if(modifiedTaskIndexInsideFilteredTasks == -1) return state;
+                filteredTasksAssignedToMeCopy[modifiedTaskIndexInsideFilteredTasks] = modifiedTask;
+                return {
+                    ...state,
+                    tasksAssignedToMe: tasksAssignedToMeCopy,
+                    tasksAssignedToMeFiltered: filteredTasksAssignedToMeCopy,
+                    currentSelectedTask: state.currentSelectedTask.id == action.task.id ? {...state.currentSelectedTask, description: action.task.description} : state.currentSelectedTask
                 }
             })();
         default:

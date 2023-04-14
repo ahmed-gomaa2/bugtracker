@@ -36,20 +36,17 @@ module.exports = (app, io) => {
         });
 
         socket.on('change-status', data => {
-            console.log(data);
             const engineers = [
                     ...data.engineers.map(eng => eng.id),
                     data.task.owner_id
             ];
             console.log(engineers)
             engineers.filter(eng => eng != data.currentUser.id).map(eng => {
-                console.log(eng);
                 io.to(eng).emit('change_status', data);
             });
         });
 
         socket.on('change-date', data => {
-            console.log(data);
             data.task.engineers.map(eng => {
                 io.to(eng.id).emit('change_date', data);
             });
@@ -63,8 +60,13 @@ module.exports = (app, io) => {
 
         socket.on('change-title', data => {
             data.task.engineers.map(eng => {
-                console.log(eng.id);
                 io.to(eng.id).emit('change_title', data);
+            });
+        });
+
+        socket.on('change-description', data => {
+            data.task.engineers.map(eng => {
+                io.to(eng.id).emit('change_description', data);
             });
         });
 

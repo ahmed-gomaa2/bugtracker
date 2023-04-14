@@ -18,8 +18,9 @@ const Task = props => {
     const solutionRef = useRef();
 
     useEffect(() => {
-        
-    }, []);
+        setTitle(props.task.title);
+    }, [props.task.title]);
+
 
     const changeTitleHandler = e => {
         console.log(title, props.task.title);
@@ -32,7 +33,7 @@ const Task = props => {
 
     const descChangeHandler = e => {
         if(desc !== props.task.description && desc.length > 1) {
-            props.changeDescription(desc, props.task.id, props.task.workspace_id);
+            props.changeDescription(desc, props.task, props.task.workspace_id, props.socket);
         }
     }
 

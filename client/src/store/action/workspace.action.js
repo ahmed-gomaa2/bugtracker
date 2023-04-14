@@ -8,7 +8,7 @@ import {
     CHANGE_FILTER_ASSIGNED,
     CHANGE_FILTER_WORKSPACE,
     CHANGE_TASK__STATUS,
-    CHANGE_TASK_ASSIGNED_TO_ME_DATE,
+    CHANGE_TASK_ASSIGNED_TO_ME_DATE, CHANGE_TASK_ASSIGNED_TO_ME_DESCRIPTION,
     CHANGE_TASK_ASSIGNED_TO_ME_PRIORITY, CHANGE_TASK_ASSIGNED_TO_ME_TITLE,
     CHANGE_TASK_ASSIGNED_TO_ME_TYPE,
     CHANGE_TASK_DESCRIPTION_FAIL,
@@ -571,11 +571,18 @@ export const changeTitle = (newTitle, task, workspace_id, socket) => async dispa
     }
 }
 
-export const changeDescription = (newDescription, task_id, workspace_id) => async dispatch => {
+export const changeTaskAssignedToMeDescription = task => {
+    return {
+        type: CHANGE_TASK_ASSIGNED_TO_ME_DESCRIPTION,
+        task
+    }
+}
+
+export const changeDescription = (newDescription, task, workspace_id, socket) => async dispatch => {
     try {
         const data = {
             description: newDescription,
-            id: task_id,
+            id: task.id,
             workspace_id
         };
 
@@ -587,6 +594,15 @@ export const changeDescription = (newDescription, task_id, workspace_id) => asyn
             task_id: res.data.id,
             workspace_id: res.data.workspace_id
         });
+
+        if(res.status === 200) {
+            const socketData = {
+                task,
+                newDescription
+            };
+
+            socket.emit('change-description', socketData);
+        }
     }catch (e) {
         if(e.response.data.error.type === 'jwt') {
             await dispatch(loadUser())

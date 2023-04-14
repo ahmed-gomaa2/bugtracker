@@ -20,7 +20,7 @@ import setHeadersHelper from "../../utls/set.headers.helper";
 import {
     addEngineerHandler,
     addTaskToAssignedTasks,
-    changeEndDateAssigned, changeTaskAssignedTitle,
+    changeEndDateAssigned, changeTaskAssignedTitle, changeTaskAssignedToMeDescription,
     changeTaskAssignedToMePriority,
     changeTaskAssignedToMeType,
     changeTaskStatus,
@@ -148,9 +148,15 @@ export const loadUser = (navigate) => async dispatch => {
             });
             socket.on('change_title', data => {
                 console.log(data);
-                dispatch(setAlert(`${data.task.title}'s end date was changed to ${data.title}`, 'primary'))
+                dispatch(setAlert(`${data.task.title}'s title was changed to ${data.title}`, 'primary'))
                 data.task.title = data.title;
                 dispatch(changeTaskAssignedTitle(data.task));
+            });
+            socket.on('change_description', data => {
+                console.log(data);
+                dispatch(setAlert(`${data.task.title}'s description was changed.`, 'primary'))
+                data.task.description = data.newDescription;
+                dispatch(changeTaskAssignedToMeDescription(data.task));
             });
             (() => {
                 const priorities = {
