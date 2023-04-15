@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {
+    CHANGE_TASK_SOLUTION_SUCCESS,
     CREATE_SOCKET_SUCCESS,
     FETCH_ALL_USERS_FAIL, FETCH_ALL_USERS_SUCCESS,
     LOAD_USER_END,
@@ -22,7 +23,7 @@ import {
     addTaskToAssignedTasks,
     changeEndDateAssigned, changeTaskAssignedTitle, changeTaskAssignedToMeDescription,
     changeTaskAssignedToMePriority,
-    changeTaskAssignedToMeType,
+    changeTaskAssignedToMeType, changeTaskSolution,
     changeTaskStatus,
     fetchWorkspaces,
     getTasksAssignedToMe,
@@ -157,6 +158,17 @@ export const loadUser = (navigate) => async dispatch => {
                 dispatch(setAlert(`${data.task.title}'s description was changed.`, 'primary'))
                 data.task.description = data.newDescription;
                 dispatch(changeTaskAssignedToMeDescription(data.task));
+            });
+            socket.on('change_solution', data => {
+                dispatch(setAlert(`${data.task.title}'s solution was changed.`, 'primary'))
+                data.task.solution = data.newSolution;
+                dispatch({
+                    type: CHANGE_TASK_SOLUTION_SUCCESS,
+                    newSolution: data.newSolution,
+                    task_id: data.task.id,
+                    workspace_id: data.task.workspace_id,
+                    task: data.task
+                });
             });
             (() => {
                 const priorities = {

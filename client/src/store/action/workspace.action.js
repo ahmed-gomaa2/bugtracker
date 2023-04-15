@@ -6,7 +6,7 @@ import {
     ADD_TASK_TO_ASSIGNED_TASKS,
     CHANGE_FILTER,
     CHANGE_FILTER_ASSIGNED,
-    CHANGE_FILTER_WORKSPACE,
+    CHANGE_FILTER_WORKSPACE, CHANGE_TASK__SOLUTION,
     CHANGE_TASK__STATUS,
     CHANGE_TASK_ASSIGNED_TO_ME_DATE, CHANGE_TASK_ASSIGNED_TO_ME_DESCRIPTION,
     CHANGE_TASK_ASSIGNED_TO_ME_PRIORITY, CHANGE_TASK_ASSIGNED_TO_ME_TITLE,
@@ -611,11 +611,18 @@ export const changeDescription = (newDescription, task, workspace_id, socket) =>
     }
 }
 
-export const changeSolution = (newSolution, task_id, workspace_id) => async dispatch => {
+export const changeTaskSolution = task => {
+    return {
+        type: CHANGE_TASK__SOLUTION,
+        task
+    }
+}
+
+export const changeSolution = (newSolution, task, workspace_id, socket, currentUser) => async dispatch => {
     try {
         const data = {
             solution: newSolution,
-            id: task_id,
+            id: task.id,
             workspace_id
         };
 
@@ -625,8 +632,20 @@ export const changeSolution = (newSolution, task_id, workspace_id) => async disp
             type: CHANGE_TASK_SOLUTION_SUCCESS,
             newSolution: res.data.solution,
             task_id: res.data.id,
-            workspace_id: res.data.workspace_id
+            workspace_id: res.data.workspace_id,
+            task
         });
+
+        if(res.status === 200) {
+            const socketData = {
+                task,
+                newSolution,
+                currentUser
+            };
+
+            socket.emit('change-solution', socketData);
+
+        }
     }catch (e) {
         if(e.response.data.error.type === 'jwt') {
             await dispatch(loadUser())

@@ -348,29 +348,21 @@ export default (state = initialState, action) => {
             })();
         case actionTypes.CHANGE_TASK_SOLUTION_SUCCESS:
             return (() => {
-                const modifiedTask = {...state.currentSelectedTask};
-                modifiedTask.solution = action.newSolution;
-                console.log(modifiedTask);
-                const currentWorkspaceTasksCopy = [...state.currentWorkspaceTasks];
-                const taskIndexInCurrentWorkspaceTasksCopy = currentWorkspaceTasksCopy.indexOf(currentWorkspaceTasksCopy.filter(t => t.id == action.task_id)[0]);
-                currentWorkspaceTasksCopy[taskIndexInCurrentWorkspaceTasksCopy] = modifiedTask;
-                const filteredTasksCopy = [...state.filteredWorkspaceTasks];
-                const taskIndexInFilteredTasksCopy = filteredTasksCopy.indexOf(filteredTasksCopy.filter(t => t.id == action.task_id)[0]);
-                filteredTasksCopy[taskIndexInFilteredTasksCopy] = modifiedTask;
-                const assignedToMeTasksCopy = [...state.tasksAssignedToMe];
-                const taskIndexInAssignedToMeTasksCopy = assignedToMeTasksCopy.indexOf(assignedToMeTasksCopy.filter(t => t.id == action.task_id)[0]);
-                assignedToMeTasksCopy[taskIndexInAssignedToMeTasksCopy] = modifiedTask;
-                const filteredAssignedToMeTasksCopy = [...state.tasksAssignedToMeFiltered];
-                const taskIndexInFilteredAssignedToMeTasksCopy = filteredAssignedToMeTasksCopy.indexOf(filteredAssignedToMeTasksCopy.filter(t => t.id == action.task_id)[0]);
-                filteredAssignedToMeTasksCopy[taskIndexInFilteredAssignedToMeTasksCopy] = modifiedTask;
-
+                const indexInCurrentWorkspaceTasks = state.currentWorkspaceTasks.indexOf(t => t.id == action.task.id);
+                indexInCurrentWorkspaceTasks !== -1 && (state.currentWorkspaceTasks[indexInCurrentWorkspaceTasks].solution = action.newSolution);
+                const indexInCurrentWorkspaceFilteredTasks = state.filteredWorkspaceTasks.indexOf(t => t.id == action.task.id);
+                indexInCurrentWorkspaceFilteredTasks !== -1 && (state.filteredWorkspaceTasks[indexInCurrentWorkspaceFilteredTasks].solution = action.newSolution);
+                const indexInAssignedToMeTasks = state.tasksAssignedToMe.indexOf(t => t.id == action.task.id);
+                indexInAssignedToMeTasks !== -1 && (state.tasksAssignedToMe[indexInAssignedToMeTasks].solution = action.newSolution);
+                const indexInAssignedToMeTasksFiltered = state.tasksAssignedToMeFiltered.indexOf(t => t.id == action.task.id);
+                indexInAssignedToMeTasksFiltered !== -1 && (state.tasksAssignedToMeFiltered[indexInAssignedToMeTasksFiltered].solution = action.newSolution);
                 return {
                     ...state,
-                    filteredWorkspaceTasks: filteredTasksCopy,
-                    currentWorkspaceTasks: currentWorkspaceTasksCopy,
-                    currentSelectedTask: state.currentSelectedTask.id == action.task_id ? modifiedTask : state.currentSelectedTask,
-                    tasksAssignedToMe: assignedToMeTasksCopy,
-                    tasksAssignedToMeFiltered: filteredAssignedToMeTasksCopy
+                    currentWorkspaceTasks: [...state.filteredWorkspaceTasks],
+                    filteredWorkspaceTasks: [...state.filteredWorkspaceTasks],
+                    tasksAssignedToMe: [...state.tasksAssignedToMe],
+                    tasksAssignedToMeFiltered: [...state.tasksAssignedToMeFiltered],
+                    currentSelectedTask: state.currentSelectedTask.id == action.task.id ? {...state.currentSelectedTask, solution: action.newSolution} : state.currentSelectedTask
                 }
             })();
         case actionTypes.GET_TASKS_ASSIGNED_TO_ME_SUCCESS:

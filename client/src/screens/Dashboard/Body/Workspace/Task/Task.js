@@ -20,6 +20,9 @@ const Task = props => {
     useEffect(() => {
         setTitle(props.task.title);
     }, [props.task.title]);
+    useEffect(() => {
+        setSol(props.task.solution);
+    }, [props.task.solution]);
 
 
     const changeTitleHandler = e => {
@@ -39,8 +42,7 @@ const Task = props => {
 
     const solChangeHandler = e => {
         if(sol!== props.task.solution && sol.length > 1) {
-            props.changeSolution(sol, props.task.id, props.task.workspace_id);
-            console.log(e.target.blur);
+            props.changeSolution(sol, props.task, props.task.workspace_id, props.socket, props.currentUser);
         }
     }
 
@@ -137,7 +139,7 @@ const Task = props => {
                             </form>
                         ) : (
                             <div className={'Task__desc my-4'}>
-                                <h3>Description</h3>
+                                <label htmlFor="" className={'my-2'}>Description: </label>
                                 <p className={'mx-3'}>{props.task.description}</p>
                             </div>
                         )
@@ -170,7 +172,8 @@ const Task = props => {
 const mapStateToProps = state => {
     return {
         task: state.workspaces.currentSelectedTask,
-        socket: state.auth.socket
+        socket: state.auth.socket,
+        currentUser: state.auth.user
     }
 }
 

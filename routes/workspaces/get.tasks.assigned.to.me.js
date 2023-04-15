@@ -11,7 +11,6 @@ module.exports = app => {
             } else if(getIdsResult.length === 0){
                 res.status(200).send([]);
             }else {
-                console.log(getIdsResult);
                 // res.status(200).send(getIdsResult)
                 const tasks = [];
                 for(let i = 0; i < getIdsResult.length; i++) {

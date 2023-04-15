@@ -70,6 +70,19 @@ module.exports = (app, io) => {
             });
         });
 
+        socket.on('change-solution', data => {
+            console.log(data);
+            const engineers = [
+                ...data.task.engineers.map(eng => eng.id),
+                data.task.owner_id
+            ];
+            console.log(engineers);
+            engineers.filter(eng => eng != data.currentUser.id).map(eng => {
+                console.log(eng);
+                io.to(eng).emit('change_solution', data);
+            });
+        });
+
         socket.on('disconnect', () => {
             console.log('USER WITH ID: ' + socket.id + ' DISCONNECTED');
         });
